@@ -13,6 +13,15 @@ description: "Platforms Infrastructure Managed Services (PIMS) operating model a
 - Defining Service Level Agreements (SLAs) or Operational Level Agreements (OLAs)
 - Coordinating with CloudOps, Security, Engineering, or Operations teams
 - Assessing operational readiness for a new or modified service
+- Identifying PIMS tools and platforms (Backstage, Dynatrace, Tenable, CrowdStrike, Delinea, Darktrace, ARMIS)
+- Understanding PIMS service ownership and key contacts per tool
+- Looking up Backstage/IDP configuration, Software Catalog, or gold path templates
+- Configuring or querying Dynatrace SRE dashboards and GitHub config repos
+- Understanding Delinea Secret Server footprint and PAM deployment locations
+- Checking VMware vSAN/vCenter estate, gold standard practices, or renewal timelines
+- Understanding cloud account read-only access (AWS Holistic-Viewer, Azure Global Reader)
+- Reviewing PIMS workstream structure (El Capitan, Blanc, Everest, Snowden)
+- Planning IaC deployment strategy (YAML templates, HCL, ReadMe.md standards)
 
 ## PIMS Overview
 
@@ -39,13 +48,17 @@ To deliver reliable, secure, and cost-effective infrastructure services that ena
 
 | Team | Responsibility | Key Contacts |
 |------|---------------|-------------|
-| **CloudOps** | Azure and AWS platform operations, resource management, cost monitoring | [INTERNAL — populate] |
-| **Infrastructure Engineering** | IaC development, automation, tooling, pipeline management | [INTERNAL — populate] |
-| **Network Operations** | Network infrastructure, firewalls, load balancers, DNS, VPN/ExpressRoute | [INTERNAL — populate] |
-| **Security Operations** | Security tooling, SIEM, vulnerability management, incident response support | [INTERNAL — populate] |
+| **CloudOps** | Azure and AWS platform operations, resource management, cost monitoring | Rich Davies, Matt Jackson, Nabeel |
+| **Infrastructure Engineering** | IaC development, automation, tooling, pipeline management | Daniel Kaminski |
+| **Network Operations** | Network infrastructure, firewalls, load balancers, DNS, VPN/ExpressRoute | Dave Nelson |
+| **Security Operations (ESRO)** | Security tooling, SIEM, vulnerability management, incident response support | David Gee, David Vine, Rob Deery, Abbie Bowes |
 | **Database Operations** | Database platform management, backups, performance, HA/DR | [INTERNAL — populate] |
-| **Monitoring & Observability** | Dynatrace administration, dashboard management, synthetic monitoring | [INTERNAL — populate] |
-| **Service Management** | ServiceNow administration, CMDB management, process governance | [INTERNAL — populate] |
+| **Monitoring & Observability** | Dynatrace administration, dashboard management, synthetic monitoring | Joseph Pemberton (JP), Robbie Frodsham, Navid Hussein |
+| **Service Management / ITOM** | ServiceNow ITOM, CMDB management, process governance | Aaron Riley (Account Manager), James Croll, Ben De Caet, Sam Hart |
+| **Platform Engineering (Backstage/IDP)** | Internal Developer Platform, Software Catalog, gold path templates | Dario DeVito, Luke Smith, Ian Hardcastle, John-Paul Drawneek, Robbie Frodsham |
+| **PAM (Delinea)** | Privileged Access Management, Secret Server, SSH proxy | David Gee, Mark Howis, Daniel Kaminski, William Macpherson |
+| **EDR (CrowdStrike)** | Endpoint detection and response, AV platform | Chris Watts, Daniel Kaminski, David Gee, Abbie Bowes |
+| **Asset Discovery (ARMIS)** | Network asset discovery, security posture | David Gee, Rob Deery, Abbie Bowes, Martin Ward |
 
 ## Service Catalogue
 
@@ -141,6 +154,34 @@ Before PIMS will accept a new service into BAU operations, the following must be
 - [ ] Change management handover (who approves changes to this service?)
 - [ ] Cost centre and budget holder confirmed for ongoing operational costs
 
+## PIMS Tools & Platforms
+
+| Tool / Platform | Category | Key URLs / Notes |
+|-----------------|----------|-----------------|
+| **Backstage (Hub)** | Internal Developer Platform (IDP) | https://hub.emis-x.uk/ — Software Catalog, Templates, TechDocs |
+| **Dynatrace** | Observability / SRE | https://zoh82166.apps.dynatrace.com/ui/apps/dynatrace.dashboards/dashboards |
+| **Tenable Nessus / tenable.io** | Vulnerability Management | Migrating to tenable.io on port 443; docs: https://docs.tenable.com/agent.htm |
+| **CrowdStrike Falcon** | EDR / AV | Deployed via IaC (PowerShell / EC2 AMI); dashboard: https://falcon.crowdstrike.com |
+| **Delinea Secret Server** | PAM | https://emis.delinea.app/view/auth/start |
+| **Darktrace** | Network AI Threat Detection | OVA appliances at Wales (×2), Gibraltar (×2), Leeds (×2), Jersey (TBC) |
+| **ARMIS** | Asset Discovery | Network-scanned; used to detect assets missing CrowdStrike |
+| **VMware vSAN/vCenter** | Virtualisation | Renewal Oct 2026; read-only access via vCenter Login Instructions |
+| **Azure DevOps (ADO)** | Work Management | El Capitan, Blanc, Everest, Snowden workstreams |
+| **AHA** | Backlog & Roadmap | Feeds ADO workstreams |
+| **ServiceNow ITOM** | IT Operations Management | Integration in evaluation |
+| **Genesis AI Platform** | AI/IDP | https://hub.emis-x.uk/catalog/platform/component/genesis |
+| **GitHub Copilot (VSC)** | AI Tooling | Claude Sonnet 4.6, Claude Opus 4.6, GPT-Codex 5.3 |
+| **Confluence Rovo Bot** | AI Tooling | Atlassian AI assistant |
+
+## SLA
+
+| Metric | Value |
+|--------|-------|
+| Availability | 24/7 × 365 |
+| Classification | Critical underpinning service |
+| Monthly Uptime Target | **99.9%** |
+
 ## References
 
 - [PIMS Operating Model](./references/pims-operating-model.md) — Detailed processes, escalation paths, and interaction model
+- [PIMS Services & Solutions Roadmap](./references/pims-services-roadmap.md) — Tool overviews, key contacts, deployment locations, URLs, and IaC strategy (source: REVIEW DRAFT, Mar 2026)
