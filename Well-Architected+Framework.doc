@@ -1,0 +1,628 @@
+Date: Mon, 20 Apr 2026 13:46:48 +0000 (UTC)
+Message-ID: <380456029.9.1776692808815@f398d82210ef>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8_4092869.1776692808814"
+
+------=_Part_8_4092869.1776692808814
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Well-Architected Framework</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Well-Architected Framework</h1>
+    <div class=3D"Section1">
+        <div class=3D"confluence-information-macro confluence-information-m=
+acro-information">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p>We want to adopt the AWS Well-Architected Framework for all of our solut=
+ions going forwards However, much of the framework is not within the remit =
+of the Architecture Team at EMIS. If we are to fully adopt the framework, w=
+e need to work collaboratively with teams and leaders to ensure ownership (=
+responsibility &amp; accountability) is agreed across the business. Further=
+, many of the questions in the AWS Well-Architected Framework are covered b=
+y processes we already have in place at EMIS and so many of the questions c=
+an be answered once instead of for every project.</p>
+<p>An overview of the Well-Architected Framework is provided below.</p>
+</div>
+</div>
+<h1 id=3D"Well-ArchitectedFramework-Overview">Overview</h1>
+<p>The <a class=3D"external-link" href=3D"https://aws.amazon.com/architectu=
+re/well-architected/" rel=3D"nofollow">AWS Well-Architected Framework</a> d=
+ocuments a set of foundational questions that allow you to understand if a =
+specific architecture aligns well with cloud best practices. The framework =
+provides a consistent approach to evaluating systems against the qualities =
+you expect from modern cloud-based systems, and the remediation that would =
+be required to achieve those qualities.</p>
+<p>The AWS Well-Architected Framework is based on six pillars =E2=80=94 ope=
+rational excellence, security, reliability, performance efficiency, cost op=
+timisation, and sustainability.</p>
+<p><strong>Table 1. The pillars of the AWS Well-Architected Framework</stro=
+ng></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"1800" data-layout=3D"center" data-local-id=3D"40=
+b9a655-9220-4e39-b1f0-929f7980b586" class=3D"confluenceTable">
+<colgroup>
+<col style=3D"width: 365.0px;">
+<col style=3D"width: 1434.0px;">
+</colgroup>
+<tbody>
+<tr>
+<th data-highlight-colour=3D"var(--color-background-container-header-g9rg0j=
+,#fafafa)" class=3D"confluenceTh">
+<p><strong>Name</strong></p></th>
+<th data-highlight-colour=3D"var(--color-background-container-header-g9rg0j=
+,#fafafa)" class=3D"confluenceTh">
+<p><strong>Description</strong></p></th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Operational Excellence</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The ability to support development and run workloads effectively, gain i=
+nsight into their operations, and to continuously improve supporting proces=
+ses and procedures to deliver business value.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Security</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The security pillar describes how to take advantage of cloud technologie=
+s to protect data, systems, and assets in a way that can improve your secur=
+ity posture.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Reliability</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The reliability pillar encompasses the ability of a workload to perform =
+its intended function correctly and consistently when it=E2=80=99s expected=
+ to. This includes the ability to operate and test the workload through its=
+ total lifecycle.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Performance Efficiency</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The ability to use computing resources efficiently to meet system requir=
+ements, and to maintain that efficiency as demand changes and technologies =
+evolve.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Cost Optimisation</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The ability to run systems to deliver business value at the lowest price=
+ point.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Sustainability</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The ability to continually improve sustainability impacts by reducing en=
+ergy consumption and increasing efficiency across all components of a workl=
+oad by maximising the benefits from the provisioned resources and minimisin=
+g the total resources required.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id=3D"Well-ArchitectedFramework-GeneralDesignPrinciples">General Design=
+ Principles</h1>
+<p>The Well-Architected Framework identifies a set of general design princi=
+ples to facilitate good design in the cloud:</p>
+<ul>
+<li>
+<p><strong>Stop guessing your capacity needs</strong>: If you make a poor c=
+apacity decision when deploying a workload, you might end up sitting on exp=
+ensive idle resources or dealing with the performance implications of limit=
+ed capacity. With cloud computing, these problems can go away. You can use =
+as much or as little capacity as you need, and scale up and down automatica=
+lly.</p></li>
+<li>
+<p><strong>Test systems at production scale</strong>: In the cloud, you can=
+ create a production-scale test environment on demand, complete your testin=
+g, and then decommission the resources. Because you only pay for the test e=
+nvironment when it's running, you can simulate your live environment for a =
+fraction of the cost of testing on premises.</p></li>
+<li>
+<p><strong>Automate to make architectural experimentation easier</strong>: =
+Automation allows you to create and replicate your workloads at low cost an=
+d avoid the expense of manual effort. You can track changes to your automat=
+ion, audit the impact, and revert to previous parameters when necessary.</p=
+></li>
+<li>
+<p><strong>Allow for evolutionary architectures</strong>: In a traditional =
+environment, architectural decisions are often implemented as static, oneti=
+me events, with a few major versions of a system during its lifetime. As a =
+business and its context continue to evolve, these initial decisions might =
+hinder the system's ability to deliver changing business requirements. In t=
+he cloud, the capability to automate and test on demand lowers the risk of =
+impact from design changes. This allows systems to evolve over time so that=
+ businesses can take advantage of innovations as a standard practice.</p></=
+li>
+<li>
+<p><strong>Drive architectures using data</strong>: In the cloud, you can c=
+ollect data on how your architectural choices affect the behaviour of your =
+workload. This lets you make fact-based decisions on how to improve your wo=
+rkload. Your cloud infrastructure is code, so you can use that data to info=
+rm your architecture choices and improvements over time.</p></li>
+<li>
+<p><strong>Improve through game days</strong>: Test how your architecture a=
+nd processes perform by regularly scheduling game days to simulate events i=
+n production. This will help you understand where improvements can be made =
+and can help develop organisational experience in dealing with events.</p><=
+/li>
+</ul>
+<h1 id=3D"Well-ArchitectedFramework-The6Pillars">The 6 Pillars</h1>
+<h2 id=3D"Well-ArchitectedFramework-1.OperationalExcellence">1. Operational=
+ Excellence</h2>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/operational-excellence-pillar/welcome.html" rel=3D"nofoll=
+ow">Operational Excellence pillar</a> includes the ability to support devel=
+opment and run workloads effectively, gain insight into their operation, an=
+d continuously improve supporting processes and procedures to delivery busi=
+ness value.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples">Design Principles</h3=
+>
+<p>There are <a class=3D"external-link" href=3D"https://docs.aws.amazon.com=
+/wellarchitected/latest/operational-excellence-pillar/design-principles.htm=
+l" rel=3D"nofollow">five design principles</a> for operational excellence i=
+n the cloud:</p>
+<ul>
+<li>
+<p>Perform operations as code</p></li>
+<li>
+<p>Make frequent, small, reversible changes</p></li>
+<li>
+<p>Refine operations procedures frequently</p></li>
+<li>
+<p>Anticipate failure</p></li>
+<li>
+<p>Learn from all operational failures</p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices">Best Practices</h3>
+<p>Operations teams need to understand their business and customer needs so=
+ they can support business outcomes. Ops creates and uses procedures to res=
+pond to operational events, and validates their effectiveness to support bu=
+siness needs. Ops also collects metrics that are used to measure the achiev=
+ement of desired business outcomes.</p>
+<p>Everything continues to change=E2=80=94your business context, business p=
+riorities, and customer needs. It=E2=80=99s important to design operations =
+to support evolution over time in response to change, and to incorporate le=
+ssons learned through their performance.</p>
+<h2 id=3D"Well-ArchitectedFramework-2.Security">2. Security</h2>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/security-pillar/welcome.html" rel=3D"nofollow">Security p=
+illar</a> includes the ability to protect data, systems, and assets to take=
+ advantage of cloud technologies to improve your security.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples.1">Design Principles</=
+h3>
+<p>There are seven design principles for security in the cloud:</p>
+<ul>
+<li>
+<p>Implement a strong identity foundation</p></li>
+<li>
+<p>Enable traceability</p></li>
+<li>
+<p>Apply security at all layers</p></li>
+<li>
+<p>Automate security best practices</p></li>
+<li>
+<p>Protect data in transit and at rest</p></li>
+<li>
+<p>Keep people away from data</p></li>
+<li>
+<p>Prepare for security events</p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices.1">Best Practices</h3>
+<p>Before you architect any workload, you need to put in place practices th=
+at influence security. You=E2=80=99ll want to control who can do what. In a=
+ddition, you want to be able to identify security incidents, protect your s=
+ystems and services, and maintain the confidentiality and integrity of data=
+ through data protection.</p>
+<p>You should have a well-defined and practiced process for responding to s=
+ecurity incidents. These tools and techniques are important because they su=
+pport objectives such as preventing financial loss or complying with regula=
+tory obligations.</p>
+<p>Because AWS physically secures the infrastructure that supports our clou=
+d services, as an AWS customer you can focus on using services to accomplis=
+h your goals. The AWS Cloud also provides greater access to security data a=
+nd an automated approach to responding to security events.</p>
+<h2 id=3D"Well-ArchitectedFramework-3.Reliability">3. Reliability</h2>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/reliability-pillar/welcome.html" rel=3D"nofollow">Reliabi=
+lity pillar</a> encompasses the ability of a workload to perform its intend=
+ed function correctly and consistently when it=E2=80=99s expected to. This =
+includes the ability to operate and test the workload through its total lif=
+ecycle.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples.2">Design Principles</=
+h3>
+<p>There are <a class=3D"external-link" href=3D"https://docs.aws.amazon.com=
+/wellarchitected/latest/reliability-pillar/design-principles.html" rel=3D"n=
+ofollow">five design principles</a> for reliability in the cloud:</p>
+<ul>
+<li>
+<p>Automatically recover from failure</p></li>
+<li>
+<p>Test recovery procedures</p></li>
+<li>
+<p>Scale horizontally to increase aggregate workload availability</p></li>
+<li>
+<p>Stop guessing capacity</p></li>
+<li>
+<p>Manage change in automation</p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices.2">Best Practices</h3>
+<p>Before building any system, foundational requirements that influence rel=
+iability should be in place. For example, you must have sufficient network =
+bandwidth to your data centre. These requirements are sometimes neglected (=
+because they are beyond a single project=E2=80=99s scope).</p>
+<p>The cloud is designed to be nearly limitless, so it=E2=80=99s the respon=
+sibility of AWS to satisfy the requirement for sufficient networking and co=
+mpute capacity, leaving you free to change resource size and allocations on=
+ demand.</p>
+<p>A reliable workload starts with upfront design decisions for both softwa=
+re and infrastructure. Your architecture choices will impact your workload =
+behaviour across all six AWS Well-Architected pillars. For reliability, the=
+re are specific patterns you must follow, such as loosely coupled dependenc=
+ies, graceful degradation, and limiting retries.</p>
+<p>Changes to your workload or its environment must be anticipated and acco=
+mmodated to achieve reliable operation of the workload. Changes include tho=
+se imposed on your workload, like a spikes in demand, as well as those from=
+ within such as feature deployments and security patches.</p>
+<p>Low-level hardware component failures are something to be dealt with eve=
+ry day in an on-premises data centre. In the cloud, however, these are ofte=
+n abstracted away. You must therefore take steps to implement resiliency in=
+ your workload, such as fault isolation, automated failover to healthy reso=
+urces, and a disaster recovery strategy.</p>
+<h2 id=3D"Well-ArchitectedFramework-4.PerformanceEfficiency">4. Performance=
+ Efficiency</h2>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/performance-efficiency-pillar/welcome.html" rel=3D"nofoll=
+ow">Performance Efficiency pillar</a> includes the ability to use computing=
+ resources efficiently to meet system requirements, and to maintain that ef=
+ficiency as demand changes and technologies evolve.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples.3">Design Principles</=
+h3>
+<p>There are <a class=3D"external-link" href=3D"https://docs.aws.amazon.com=
+/wellarchitected/latest/performance-efficiency-pillar/design-principles.htm=
+l" rel=3D"nofollow">five design principles</a> for performance efficiency i=
+n the cloud:</p>
+<ul>
+<li>
+<p>Democratise advanced technologies</p></li>
+<li>
+<p>Go global in minutes</p></li>
+<li>
+<p>Use serverless architectures</p></li>
+<li>
+<p>Experiment more often</p></li>
+<li>
+<p>Consider <a class=3D"external-link" href=3D"https://wa.aws.amazon.com/we=
+llarchitected/2020-07-02T19-33-23/wat.concept.mechanical-sympathy.en.html" =
+rel=3D"nofollow">mechanical sympathy</a></p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices.3">Best Practices</h3>
+<p>Take a data-driven approach to building a high-performance architecture.=
+ Gather data on all aspects of the architecture, from the high-level design=
+ to the selection and configuration of resource types.</p>
+<p>Reviewing your choices on a regular basis ensures you are taking advanta=
+ge of the continually evolving AWS Cloud. Monitoring ensures you are aware =
+of any deviance from expected performance. Make trade-offs in your architec=
+ture to improve performance, such as using compression or caching, or relax=
+ing consistency requirements</p>
+<p>The optimal solution for a particular workload varies, and solutions oft=
+en combine multiple approaches. AWS Well-Architected workloads use multiple=
+ solutions and enable different features to improve performance</p>
+<h2 id=3D"Well-ArchitectedFramework-5.CostOptimisation">5. Cost Optimisatio=
+n</h2>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/cost-optimization-pillar/welcome.html" rel=3D"nofollow">C=
+ost Optimisation pillar</a> includes the ability to run systems to deliver =
+business value at the lowest price point.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples.4">Design Principles</=
+h3>
+<p>There are <a class=3D"external-link" href=3D"https://docs.aws.amazon.com=
+/wellarchitected/latest/cost-optimization-pillar/design-principles.html" re=
+l=3D"nofollow">five design principles</a> for cost optimisation in the clou=
+d:</p>
+<ul>
+<li>
+<p>Implement cloud financial management</p></li>
+<li>
+<p>Adopt a consumption model</p></li>
+<li>
+<p>Measure overall efficiency</p></li>
+<li>
+<p>Stop spending money on undifferentiated heavy lifting</p></li>
+<li>
+<p>Analyse and attribute expenditure</p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices.4">Best Practices</h3>
+<p>As with the other pillars, there are trade-offs to consider. For example=
+, do you want to optimise for speed to market or for cost? In some cases, i=
+t=E2=80=99s best to optimise for speed=E2=80=94going to market quickly, shi=
+pping new features, or simply meeting a deadline=E2=80=94rather than invest=
+ing in up-front cost optimisation.</p>
+<p>Design decisions are sometimes directed by haste rather than data, and a=
+s the temptation always exists to overcompensate rather than spend time ben=
+chmarking for the most cost-optimal deployment. This might lead to over-pro=
+visioned and under-optimised deployments.</p>
+<p>Using the appropriate services, resources, and configurations for your w=
+orkloads is key to cost savings</p>
+<h2 id=3D"Well-ArchitectedFramework-6.Sustainability">6. Sustainability</h2=
+>
+<p>The <a class=3D"external-link" href=3D"https://docs.aws.amazon.com/wella=
+rchitected/latest/sustainability-pillar/sustainability-pillar.html" rel=3D"=
+nofollow">discipline of sustainability</a> addresses the long-term environm=
+ental, economic, and societal impact of your business activities.</p>
+<h3 id=3D"Well-ArchitectedFramework-DesignPrinciples.5">Design Principles</=
+h3>
+<p>There are <a class=3D"external-link" href=3D"https://docs.aws.amazon.com=
+/wellarchitected/latest/sustainability-pillar/design-principles-for-sustain=
+ability-in-the-cloud.html" rel=3D"nofollow">six design principles</a> for s=
+ustainability in the cloud:</p>
+<ul>
+<li>
+<p>Understand your impact</p></li>
+<li>
+<p>Establish sustainability goals</p></li>
+<li>
+<p>Maximise utilisation</p></li>
+<li>
+<p>Anticipate and adopt new, more efficient hardware and software offerings=
+</p></li>
+<li>
+<p>Use managed services</p></li>
+<li>
+<p>Reduce the downstream impact of your cloud workloads</p></li>
+</ul>
+<h3 id=3D"Well-ArchitectedFramework-BestPractices.5">Best Practices</h3>
+<p>Choose AWS Regions where you will implement workloads based on your busi=
+ness requirements and sustainability goals.</p>
+<p>User behaviour patterns can help you identify improvements to meet susta=
+inability goals. For example, scale infrastructure down when not needed, po=
+sition resources to limit the network required for users to consume them, a=
+nd remove unused assets.</p>
+<p>Implement software and architecture patterns to perform load smoothing a=
+nd maintain consistent high utilisation of deployed resources. Understand t=
+he performance of your workload components, and optimise the components tha=
+t consume the most resources.</p>
+<p>Analyse data patterns to implement data management practices that reduce=
+ the provisioned storage required to support your workload. Use lifecycle c=
+apabilities to move data to more efficient, less performant storage when re=
+quirements decrease, and delete data that=E2=80=99s no longer required.</p>
+<p>Analyse hardware patterns to identify opportunities that reduce workload=
+ sustainability impacts by minimising the amount of hardware needed to prov=
+ision and deploy. Select the most efficient hardware for your individual wo=
+rkload.</p>
+<p>In your development and deployment process, identify opportunities to re=
+duce your sustainability impact by making changes, such as updating systems=
+ to gain performance efficiencies and manage sustainability impacts. Use au=
+tomation to manage the lifecycle of your development and test environments,=
+ and use managed device farms for testing.</p>
+    </div>
+</body>
+</html>
+------=_Part_8_4092869.1776692808814--

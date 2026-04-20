@@ -12,6 +12,10 @@ description: "Authoritative source registry for EMIS/Optum infrastructure archit
 - Finding previous HLD/LLD designs for similar solutions
 - Locating CMDB data, asset information, or configuration details
 - Identifying the correct Confluence space or wiki page for a topic
+- Looking up **cloud resource naming conventions** or **tagging standards** — see [references/naming-tagging-policy.md](references/naming-tagging-policy.md)
+- Checking **architecture knowledge gaps**, regional knowledge areas, or vendor contact tracking — see [references/knowledge-base-tracker.md](references/knowledge-base-tracker.md)
+- Reviewing **security architecture requirements** (Zero Trust, encryption, authentication, OWASP) — see [references/security-architecture.md](references/security-architecture.md)
+- Applying the **AWS Well-Architected Framework** pillars and design principles — see [references/well-architected-framework.md](references/well-architected-framework.md)
 
 ## Source Registry
 
@@ -29,6 +33,10 @@ description: "Authoritative source registry for EMIS/Optum infrastructure archit
 | **Azure DevOps — Boards** | Work Tracking | [INTERNAL — populate: ADO organisation URL] | Demand items, project tasks, sprint boards |
 | **SharePoint — Architecture** | Document Store | [INTERNAL — populate: SharePoint site URL] | Formal HLD/LLD documents, cost estimates, presentations, diagrams |
 | **Dynatrace** | Monitoring | [INTERNAL — populate: Dynatrace environment URL] | Application topology, performance baselines, service dependencies |
+| **Cloud Resource Naming & Tagging Policy** | Standard | [references/naming-tagging-policy.md](references/naming-tagging-policy.md) | Naming convention format, resource type abbreviations (AWS & Azure), mandatory tags, tagging limits, platform-specific exemptions |
+| **Infrastructure Architecture Knowledge Base Tracker** | Tracker | [references/knowledge-base-tracker.md](references/knowledge-base-tracker.md) | Knowledge gaps, regional architecture areas (Gibraltar, Jersey, Wales, Scotland, NI, IoM, Guernsey), vendor relationships, DC exits, progress tracking |
+| **Security Architecture** | Standard | [references/security-architecture.md](references/security-architecture.md) | Security by Design principles, Zero Trust model, mandatory security requirements (encryption, auth, OWASP, least privilege, audit), child page index |
+| **Well-Architected Framework** | Standard | [references/well-architected-framework.md](references/well-architected-framework.md) | EMIS adoption context for AWS WAF, 6 pillars (operational excellence, security, reliability, performance efficiency, cost optimisation, sustainability), design principles, best practices |
 
 ### Previous Design Artefacts
 

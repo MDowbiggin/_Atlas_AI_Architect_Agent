@@ -18,7 +18,7 @@ description: "Architecture frameworks, design patterns, and principles for infra
 
 ### Core Principles
 
-1. **Cloud-First, Not Cloud-Only** — Prefer cloud-native solutions (Azure primary, AWS secondary) but support hybrid and on-premises where justified by regulation, latency, or cost
+1. **Cloud-First, Not Cloud-Only** — Prefer cloud-native solutions (AWS primary, Azure secondary) but support hybrid and on-premises where justified by regulation, latency, or cost
 2. **Design for Resilience** — All production systems must meet defined RTO/RPO targets with automated failover where possible
 3. **Security by Design** — Security controls are integral to the architecture, not bolted on afterwards
 4. **Cost-Conscious Design** — Right-size from day one; design for elasticity and auto-scaling; avoid over-provisioning

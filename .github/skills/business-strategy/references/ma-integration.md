@@ -2,7 +2,7 @@
 
 ## Overview
 
-EMIS/Optum, as part of UnitedHealth Group/Optum, participates in mergers, acquisitions, and divestitures. Infrastructure architects must be prepared to rapidly assess and integrate acquired entity infrastructure, or separate and divest business unit infrastructure.
+EMIS/Optum participates in mergers, acquisitions, and divestitures. Infrastructure architects must be prepared to rapidly assess and integrate acquired entity infrastructure, or separate and divest business unit infrastructure.
 
 ## Integration Playbook
 

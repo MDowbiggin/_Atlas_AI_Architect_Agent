@@ -27,8 +27,8 @@ description: "Technology standards, approved platforms, and migration paths for 
 
 | Domain | Strategic | Tactical | Containment |
 |--------|-----------|----------|-------------|
-| **Cloud (Primary)** | Microsoft Azure | — | — |
-| **Cloud (Secondary)** | AWS | — | — |
+| **Cloud (Primary)** | AWS | — | — |
+| **Cloud (Secondary)** | Microsoft Azure | — | — |
 | **Virtualisation** | VMware vSphere 8.x | vSphere 7.x | vSphere 6.x |
 | **Containers** | AKS / EKS | Docker Compose | — |
 | **IaC** | Terraform, Azure Bicep | ARM Templates, CloudFormation | Manual provisioning |

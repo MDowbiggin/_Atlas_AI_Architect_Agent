@@ -19,7 +19,7 @@ description: "Business strategy and priorities for EMIS/Optum infrastructure. Us
 
 ### 1. Cloud-First Transformation
 
-**Objective**: Migrate the majority of workloads to Azure (primary) and AWS (secondary), reducing on-premises footprint while maintaining hybrid capability where required.
+**Objective**: Migrate the majority of workloads to AWS (primary) and Azure (secondary), reducing on-premises footprint while maintaining hybrid capability where required.
 
 **Key Initiatives**:
 - Assess and categorise all on-premises workloads (migrate, modernise, retain, retire)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Microsoft Azure is the **strategic primary cloud platform** for EMIS/Optum. All new cloud workloads should use Azure unless there is a documented justification for AWS or on-prem.
+Microsoft Azure is the **strategic secondary cloud platform** for EMIS/Optum. Use Azure when workloads are tightly integrated with Microsoft services (M365, Entra ID), when specific Azure PaaS services offer a materially better fit, or when existing Azure commitments make it more cost-effective. For all other workloads, AWS is the primary platform.
 
 ## Approved Regions
 

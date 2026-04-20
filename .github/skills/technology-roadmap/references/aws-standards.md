@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon Web Services is the **strategic secondary cloud platform** for EMIS/Optum. Use AWS when workloads are already AWS-native, when specific AWS services are required, or when multi-cloud resilience is architecturally justified.
+Amazon Web Services is the **strategic primary cloud platform** for EMIS/Optum. All new cloud workloads should default to AWS unless there is a documented justification for Azure (e.g., M365 integration, existing Azure estate) or on-prem.
 
 ## Approved Regions
 

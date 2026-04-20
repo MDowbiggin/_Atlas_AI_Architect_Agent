@@ -2,7 +2,7 @@
 
 ## Overview
 
-EMIS/Optum uses both the **Azure Well-Architected Framework** (primary) and the **AWS Well-Architected Framework** (secondary) to evaluate and validate infrastructure designs. Every architecture must be assessed against all pillars.
+EMIS/Optum uses both the **AWS Well-Architected Framework** (primary) and the **Azure Well-Architected Framework** (secondary) to evaluate and validate infrastructure designs. Every architecture must be assessed against all pillars.
 
 ## Azure Well-Architected Framework Pillars
 

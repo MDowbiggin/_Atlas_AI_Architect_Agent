@@ -2,7 +2,7 @@
 
 ## Overview
 
-Cloud migration at EMIS/Optum follows a structured approach aligned with the Azure Cloud Adoption Framework and the 6 Rs of migration. Azure is the primary target; AWS is secondary for specific use cases.
+Cloud migration at EMIS/Optum follows a structured approach aligned with the AWS Cloud Adoption Framework and the 6 Rs of migration. AWS is the primary target; Azure is secondary for M365-integrated and existing Azure-hosted workloads.
 
 ## The 6 Rs of Migration
 
