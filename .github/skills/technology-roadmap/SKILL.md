@@ -70,8 +70,9 @@ description: "Technology standards, approved platforms, and migration paths for 
 ## References
 
 - [Azure Standards](./references/azure-standards.md) — Azure service selection, regions, SKU guidance
-- [AWS Standards](./references/aws-standards.md) — AWS service selection, regions, instance types
+- [AWS Standards](./references/aws-standards.md) — AWS service selection, regions, instance types, ECS/EKS, Lambda, messaging, security services, cost optimisation
+- [AWS Landing Zone & Control Tower](./references/aws-landing-zone.md) — Multi-account strategy, Organizations, Control Tower, SCPs, account vending, IAM Identity Center, network-per-account design
 - [On-Prem & VMware](./references/on-prem-vmware.md) — VMware vSphere, vSAN, NSX, on-prem compute/storage
-- [Networking](./references/networking.md) — Network design, SD-WAN, DNS, load balancing, firewalls
-- [Automation & IaC](./references/automation-iac.md) — Terraform, Ansible, Bicep, CloudFormation standards
+- [Networking](./references/networking.md) — Network design, AWS VPC/TGW/Route 53, SD-WAN, DNS, load balancing, firewalls
+- [Automation & IaC](./references/automation-iac.md) — Terraform (Azure + AWS backends), Ansible, Bicep, CloudFormation standards
 - [Tooling](./references/tooling-ado-vsc-servicenow-dynatrace.md) — ADO, VS Code, ServiceNow, Dynatrace configuration

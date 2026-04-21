@@ -108,35 +108,154 @@ EMIS/Optum uses both the **AWS Well-Architected Framework** (primary) and the **
 
 ## AWS Well-Architected Framework Pillars
 
-The AWS pillars mirror Azure's with the following EMIS/Optum-specific mappings:
+AWS is the **primary cloud platform** for EMIS/Optum. The following EMIS/Optum standards apply for all AWS-hosted workloads, organised by the six AWS WAF pillars.
 
-| AWS Pillar | Azure Equivalent | Key AWS Services |
-|-----------|-----------------|-----------------|
-| Operational Excellence | Operational Excellence | CloudWatch, CloudFormation, Systems Manager |
-| Security | Security | IAM, KMS, GuardDuty, Security Hub |
-| Reliability | Reliability | Auto Scaling, Route 53, S3 Cross-Region Replication |
-| Performance Efficiency | Performance Efficiency | CloudFront, ElastiCache, Auto Scaling |
-| Cost Optimization | Cost Optimisation | Cost Explorer, Savings Plans, Trusted Advisor |
-| Sustainability | — | Graviton instances, region selection for carbon efficiency |
+### 1. Operational Excellence (AWS)
 
-> **Note**: For AWS-hosted workloads, apply the same standards and thresholds defined above. Use AWS-native services where the workload is AWS-primary; avoid mixing Azure and AWS services for the same workload unless specifically approved for multi-cloud resilience.
+**Goal**: Run and monitor systems to deliver business value and continuously improve supporting processes and procedures.
 
-## Architecture Review Scorecard
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Infrastructure as Code | All infrastructure in Terraform with AWS provider; state in S3 + DynamoDB lock |
+| Deployment | ADO Pipelines; Dev → Test → Staging → Prod promotion; manual approval gate for production |
+| Monitoring | CloudWatch + Dynatrace OneAgent on all EC2/ECS/EKS; structured JSON logs |
+| Alerting | P1: CloudWatch alarm → SNS → PagerDuty (5 min); P2: SNS → ServiceNow auto-ticket |
+| Run Books | Published to ServiceNow Knowledge Base; cover start/stop, DR, common failures |
+| Change Management | All changes via ServiceNow RFC; ADO pipeline as the only deployment path |
+| Post-Incident Review | Blameless PIR for all P1/P2 within 5 business days; findings fed back to architecture |
 
-Use this scorecard when reviewing architectures against WAF pillars:
+**Design Review Questions (AWS)**:
+- Is all infrastructure defined in Terraform with peer-reviewed PRs in ADO?
+- Are CloudWatch dashboards and alarms defined before go-live?
+- Are operational runbooks complete and accessible in ServiceNow?
+- Is the CMDB updated with all AWS resource CIs?
+
+### 2. Security (AWS)
+
+**Goal**: Protect data, systems, and assets to take advantage of cloud technologies to improve security.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Identity & Access | IAM Identity Center (SSO) federated from Azure AD; no long-lived IAM user access keys |
+| Least Privilege | IAM roles/instance profiles for services; IRSA for EKS pods; permission boundaries on developer roles |
+| Network | VPC with 4-tier subnets; Security Groups deny-all default; no public SSH/RDP (SCP-enforced) |
+| Data Protection | KMS CMK for Confidential/Restricted data at rest; TLS 1.2+ in transit; ACM for certificates |
+| Secrets | AWS Secrets Manager (PHI/credentials); Parameter Store SecureString (config); never plaintext env vars |
+| Detection | GuardDuty + Security Hub in all accounts; findings auto-ticketed in ServiceNow |
+| Admin Access | Systems Manager Session Manager only; no bastion hosts; sessions logged to CloudWatch/S3 |
+| Compliance | CIS AWS v3.0 conformance pack via AWS Config in all accounts |
+| PHI Data | Macie enabled in production; S3 Block Public Access at account level (SCP-enforced) |
+
+**Design Review Questions (AWS)**:
+- Are all services using IAM roles — no hardcoded credentials or long-lived access keys?
+- Are VPC endpoints configured for all AWS services accessed from private subnets?
+- Is GuardDuty enabled and findings routed to ServiceNow?
+- Is KMS CMK in use for all Confidential/Restricted data at rest?
+
+### 3. Reliability (AWS)
+
+**Goal**: Ensure a workload performs its intended function correctly and consistently when it's expected to.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Availability Target | Production: ≥ 99.9% unless specified; Tier 1 mission-critical: ≥ 99.99% |
+| RTO | Tier 1: ≤ 1hr; Tier 2: ≤ 4hr; Tier 3: ≤ 24hr |
+| RPO | Tier 1: ≤ 15min; Tier 2: ≤ 1hr; Tier 3: ≤ 24hr |
+| Multi-AZ | Minimum 2 AZs for production in `eu-west-2`; 3 AZs preferred |
+| Auto Scaling | Auto Scaling Groups for EC2; ECS Service Auto Scaling; Karpenter / Cluster Autoscaler for EKS |
+| Database HA | RDS Multi-AZ; Aurora (Multi-AZ by default); automated failover < 60 seconds |
+| Backup | AWS Backup with cross-region copy to `eu-west-1` for Tier 1; 30-day minimum retention |
+| DR Testing | Tier 1: quarterly using AWS Fault Injection Service (FIS); Tier 2: 6-monthly; Tier 3: annually |
+| Health Checks | ALB target group health checks; Route 53 health checks for DNS failover |
+| Circuit Breakers | Implemented via ECS Service Connect / App Mesh / application-level SDK patterns |
+
+**Design Review Questions (AWS)**:
+- Are workloads distributed across ≥ 2 AZs with Auto Scaling?
+- Has disaster recovery to `eu-west-1` been designed and tested?
+- Is AWS Backup configured with cross-region copy for Tier 1 workloads?
+- Have AWS FIS chaos tests been planned for Tier 1 services?
+
+### 4. Performance Efficiency (AWS)
+
+**Goal**: Use computing resources efficiently to meet system requirements and maintain efficiency as demand changes.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Compute Selection | Graviton (`arm64`) preferred for new workloads (20% savings + better price/performance) |
+| Right-Sizing | AWS Compute Optimizer consulted at design; re-reviewed 30 days post go-live |
+| Scaling Strategy | Horizontal scaling mandatory for stateless services; vertical only as last resort |
+| Caching | ElastiCache (Redis) for session state, DB query caching; CloudFront for static content |
+| Database Performance | Query analysis via Performance Insights (RDS); Connection pooling (RDS Proxy for serverless) |
+| Content Delivery | CloudFront for static assets and API acceleration |
+| Latency Measurement | Define and test P50/P95/P99 latency targets before go-live; monitor in CloudWatch |
+| Serverless | Lambda with Graviton (`arm64`) for event-driven workloads; right-size memory via Lambda Power Tuning |
+
+**Design Review Questions (AWS)**:
+- Have Graviton instances been evaluated and adopted where compatible?
+- Is caching implemented at the appropriate layer (application, database, CDN)?
+- Has the workload been load-tested against expected peak demand?
+- Are P95/P99 latency targets defined and monitored?
+
+### 5. Cost Optimisation (AWS)
+
+**Goal**: Run systems to deliver business value at the lowest price point.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Savings Plans | ≥ 70% of steady-state compute covered by Compute or EC2 Savings Plans |
+| Reserved Instances | RDS, ElastiCache, Redshift: 1 or 3 year reservations for stable workloads |
+| Spot Instances | Dev/Test EC2, batch jobs, EKS worker pools; Spot interruption handling required |
+| Graviton | `arm64` for Lambda, Fargate, EKS — ~20% cost reduction vs x86 at same performance |
+| Right-Sizing | Compute Optimizer recommendations reviewed quarterly; CPU/memory targets: 60-80% utilisation |
+| Auto-Scaling | Scale-to-zero for non-production out-of-hours (EventBridge scheduled scaling) |
+| Cost Anomaly Detection | Enabled per account; alert threshold ≥ £50/day or 20% above baseline |
+| Tagging | Mandatory: `CostCentre`, `Environment`, `Owner`, `Application`, `Project`, `ManagedBy` |
+| Resource Lifecycle | Termination protection on production; deletion policy reviews monthly; DynamoDB TTL for transient data |
+| Data Transfer | Minimise cross-AZ data transfer (keep related services in same AZ where possible); use VPC endpoints to avoid NAT Gateway charge for S3/DynamoDB |
+
+**Design Review Questions (AWS)**:
+- Have Savings Plans been purchased or planned for steady-state compute?
+- Are Spot instances used for eligible dev/test and batch workloads?
+- Is auto-scaling configured with scheduled scale-down for non-production?
+- Are all resources tagged per the mandatory tagging policy?
+
+### 6. Sustainability (AWS)
+
+**Goal**: Minimise the environmental impacts of running cloud workloads.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Region Selection | `eu-west-2` (London) — Amazon targets 100% renewable energy; prefer over regions with lower renewable mix |
+| Instance Type | Graviton favoured — AWS states up to 60% less energy vs comparable x86 workloads |
+| Serverless | Lambda and Fargate consume no resources when idle — preferred for variable/event-driven workloads |
+| Storage Tiering | S3 Intelligent-Tiering for data with variable access patterns; Glacier for archival; delete data at end of retention period |
+| Scale-to-Zero | Dev/Test environments shut down out-of-hours via EventBridge scheduled rules |
+| Container Density | Maximise pod/task density per node; avoid over-provisioned node pools |
+
+**Design Review Questions (AWS)**:
+- Is `eu-west-2` the primary region for new workloads?
+- Are Graviton and serverless options evaluated for all new workload components?
+- Is S3 lifecycle policy configured to transition to appropriate storage tiers?
+
+---
+
+## AWS Architecture Review Scorecard
+
+Use this scorecard when reviewing AWS architectures against WAF pillars:
 
 ```markdown
 | Pillar | Score (1-5) | Evidence | Gaps | Recommendations |
 |--------|-------------|----------|------|-----------------|
-| Reliability | | | | |
-| Security | | | | |
-| Cost Optimisation | | | | |
 | Operational Excellence | | | | |
+| Security | | | | |
+| Reliability | | | | |
 | Performance Efficiency | | | | |
+| Cost Optimisation | | | | |
+| Sustainability | | | | |
 | **Overall** | | | | |
 ```
 
-**Scoring Guide**:
+**Scoring Guide** (applies to both Azure and AWS scorecards):
 - **5** — Exceeds standards; best-practice implementation with documented evidence
 - **4** — Meets standards; minor improvements possible
 - **3** — Partially meets standards; specific gaps identified with remediation plan

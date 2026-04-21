@@ -41,15 +41,45 @@ environments/
 ```
 
 **Mandatory Practices**:
-- **Remote State**: Azure Storage Account with state locking (blob lease)
-- **State Isolation**: Separate state file per environment
-- **Naming Convention**: `rg-<app>-<env>-<region>` for resource groups; follow Azure naming standards
-- **Tagging**: All resources must include mandatory tags (CostCentre, Environment, Owner, Application, Project)
-- **Secrets**: Never hardcode credentials; use Azure Key Vault data sources or environment variables
+- **Remote State**: Azure workloads → Azure Storage Account with state locking (blob lease); AWS workloads → S3 bucket + DynamoDB table (see examples below)
+- **State Isolation**: Separate state file per environment (and per account for AWS multi-account)
+- **Naming Convention**: `rg-<app>-<env>-<region>` for Azure resource groups; follow naming standards per platform
+- **Tagging**: All resources must include mandatory tags (CostCentre, Environment, Owner, Application, Project, ManagedBy)
+- **Secrets**: Never hardcode credentials; use Azure Key Vault data sources or AWS Secrets Manager / SSM Parameter Store
 - **Plan Before Apply**: `terraform plan` output must be reviewed before `terraform apply`
 - **Linting**: `terraform fmt` and `tflint` in CI pipeline
 - **Security Scanning**: `tfsec` or `checkov` in CI pipeline; block deployment on high-severity findings
 - **Module Versioning**: Pin module versions; use semantic versioning
+
+**Azure Remote State Backend**:
+```hcl
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "rg-terraform-state-shared"
+    storage_account_name = "stterraformstate001"
+    container_name       = "tfstate"
+    key                  = "${var.application}/${var.environment}.tfstate"
+  }
+}
+```
+
+**AWS Remote State Backend** (S3 + DynamoDB lock):
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "emis-terraform-state-shared"
+    key            = "${var.application}/${var.environment}/terraform.tfstate"
+    region         = "eu-west-2"
+    dynamodb_table = "emis-terraform-state-lock"
+    encrypt        = true
+    kms_key_id     = "arn:aws:kms:eu-west-2:<shared-account-id>:key/<key-id>"
+    # Cross-account: role in shared services account holds the state bucket
+    role_arn       = "arn:aws:iam::<shared-account-id>:role/TerraformStateRole"
+  }
+}
+```
+
+> The S3 state bucket must have: versioning enabled, SSE-KMS encryption, Block Public Access, MFA Delete, and Object Lock (optional but recommended). The DynamoDB table must have `LockID` as the partition key (String).
 
 ### Azure Bicep (Strategic — Azure-Only)
 

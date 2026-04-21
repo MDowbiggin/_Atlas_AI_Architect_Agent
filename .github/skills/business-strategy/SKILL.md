@@ -28,7 +28,7 @@ description: "Business strategy and priorities for EMIS/Optum infrastructure. Us
 - Maintain hybrid capability for regulated, latency-sensitive, or legacy workloads
 
 **Architecture Implications**:
-- New solutions default to cloud-native (Azure-first)
+- New solutions default to cloud-native (AWS-first)
 - On-premises deployment requires explicit justification and ARB approval
 - Hybrid designs must use ExpressRoute with VPN backup
 - All cloud deployments must use approved landing zone patterns

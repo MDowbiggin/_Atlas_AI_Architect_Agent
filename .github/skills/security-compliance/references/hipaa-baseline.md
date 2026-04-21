@@ -126,4 +126,40 @@ When designing infrastructure that handles PHI:
 - [ ] Disaster recovery for PHI systems meets defined RTO/RPO
 - [ ] Break-glass access procedure is documented and tested
 - [ ] Business Associate Agreements (BAA) are in place for all third-party services handling PHI
-- [ ] Cloud services used for PHI are HIPAA-eligible (Azure: BAA covers most services; AWS: BAA covers specified services)
+- [ ] Cloud services used for PHI are HIPAA-eligible (Azure: BAA covers most services; AWS: BAA covers specified services — see list below)
+- [ ] Business Associate Agreements (BAA) are in place for all third-party services handling PHI
+
+## AWS HIPAA Compliance Guidance
+
+### AWS Business Associate Agreement
+
+AWS will execute a BAA covering the use of **HIPAA-eligible services** only. Infrastructure Architects must verify that any AWS service storing or processing PHI is on the HIPAA-eligible services list.
+
+**Key HIPAA-eligible AWS services** (verify current list at [AWS HIPAA compliance](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/)):
+
+| Category | Eligible Services |
+|----------|------------------|
+| Compute | EC2, Lambda, ECS, EKS, Fargate, Auto Scaling |
+| Storage | S3, EBS, EFS, FSx, Glacier |
+| Database | RDS (all engines), Aurora, DynamoDB, ElastiCache, Redshift |
+| Networking | VPC, Direct Connect, ALB, NLB, CloudFront, Route 53, API Gateway |
+| Security | IAM, KMS, Secrets Manager, GuardDuty, Security Hub, Macie, CloudTrail, Config |
+| Management | Systems Manager, CloudWatch, CloudFormation |
+| AI/ML | Bedrock, Comprehend Medical |
+
+> ⚠️ Not all AWS services are HIPAA-eligible. Services not on the list must **not** store, transmit, or process PHI. Review new services against the list before adoption.
+
+### AWS-Specific HIPAA Controls
+
+| Control | AWS Implementation |
+|---------|-------------------|
+| Audit Logging | CloudTrail multi-region trail; VPC Flow Logs; S3 access logs; all to Log Archive account S3 (immutable) |
+| Log Retention | CloudWatch Logs: 6-year retention for PHI audit logs; S3 Object Lock (WORM) on Log Archive buckets |
+| PHI at Rest Encryption | KMS CMK (not AWS-managed key) for all S3 buckets, RDS, EBS, DynamoDB, and SQS queues containing PHI |
+| PHI in Transit | TLS 1.2+ enforced; S3 bucket policies deny `aws:SecureTransport: false` |
+| Access Control | IAM roles (no IAM users for applications); IRSA for EKS; principle of least privilege enforced via IAM Access Analyzer |
+| PHI Discovery | Amazon Macie: automated sensitive data discovery on S3; findings reviewed monthly |
+| Breach Detection | GuardDuty: threat intelligence and anomaly detection; findings auto-escalated to ServiceNow |
+| Backup | AWS Backup with cross-region copy; 30-day minimum; 6-year for PHI audit records |
+| Break-Glass | Break-glass IAM role in each account; access logged to CloudTrail; notification to Security team via EventBridge → SNS |
+| BAA | Signed BAA with AWS enforceable for all applicable accounts via AWS Organizations |

@@ -111,6 +111,69 @@ The Center for Internet Security (CIS) Benchmarks provide prescriptive hardening
 | 5.2 | No public RDP | Port 3389 not open to 0.0.0.0/0 |
 | 5.3 | No public SSH | Port 22 not open to 0.0.0.0/0 |
 | 5.4 | VPC peering routing | Least-privilege routing tables for peered VPCs |
+| 5.5 | VPC Flow Logs | Enabled for all VPCs; sent to CloudWatch Logs; Version 5 |
+| 5.6 | Security Groups | Reference by SG ID not CIDR where possible; no 0.0.0.0/0 on administrative ports |
+| 5.7 | Network ACLs | Restrict ingress to only required ports; no 0.0.0.0/0 on sensitive ports |
+
+### Compute (EC2 & AMI)
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| 6.1 | IMDSv2 | Required on all EC2 instances; IMDSv1 disabled (SCP + Config rule) |
+| 6.2 | EBS encryption | Default EBS encryption enabled at account level (KMS) |
+| 6.3 | Public AMI | No AMIs shared publicly without security review |
+| 6.4 | Instance Profile | All EC2 instances use an IAM instance profile; no access keys on instances |
+| 6.5 | Systems Manager agent | SSM Agent installed on all instances; used for patching and session management |
+| 6.6 | Public IP | No public IP addresses on EC2 instances in application or database subnets |
+| 6.7 | Snapshots | EBS snapshots not shared publicly; encrypted at rest |
+
+### Storage (S3)
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| 7.1 | Block Public Access | Enabled at account level (all 4 settings) — SCP-enforced |
+| 7.2 | Bucket encryption | SSE-S3 minimum; SSE-KMS CMK for Confidential/Restricted data |
+| 7.3 | Versioning | Enabled for buckets containing: Config delivery, CloudTrail logs, Terraform state, application data backups |
+| 7.4 | MFA Delete | Enabled on Log Archive buckets containing immutable audit logs |
+| 7.5 | Bucket policy | Deny HTTP (`aws:SecureTransport: false`); deny `s3:*` to `*` without explicit allow |
+| 7.6 | Lifecycle policy | Configured; transition to Glacier/Intelligent-Tiering after retention threshold |
+| 7.7 | Replication | Cross-region replication to eu-west-1 for Tier 1 critical data |
+| 7.8 | Object Lock | Enabled for Log Archive and compliance-retention buckets (WORM) |
+
+### Database (RDS)
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| 8.1 | Encryption at rest | KMS encryption enabled on all RDS instances and Aurora clusters |
+| 8.2 | Encryption in transit | `force_ssl=1` parameter group setting; TLS connections required |
+| 8.3 | Multi-AZ | Enabled for all production RDS instances |
+| 8.4 | Automated backups | Enabled; minimum 7-day retention (30-day for production) |
+| 8.5 | Public access | `publicly_accessible = false` on all RDS instances |
+| 8.6 | IAM authentication | Enabled; prefer IAM DB auth over username/password for application connections |
+| 8.7 | Enhanced monitoring | Enabled (60-second granularity for production) |
+| 8.8 | Performance Insights | Enabled; 7-day free retention; 2 years paid for production |
+| 8.9 | Minor version upgrade | Auto minor version upgrades enabled |
+| 8.10 | Deletion protection | Enabled on all production RDS instances |
+
+### KMS & Secrets
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| 9.1 | Key rotation | Automatic rotation enabled for all customer-managed KMS CMKs (annual) |
+| 9.2 | Secrets Manager rotation | Automatic rotation enabled for all database credentials and API keys |
+| 9.3 | No plaintext secrets | No hardcoded secrets in code, Lambda environment variables, or CloudFormation templates |
+| 9.4 | KMS key policies | Deny `kms:*` to `*` (no full admin via key policy alone); require IAM policy + key policy |
+
+### Monitoring & Alerting
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| 10.1 | CloudTrail metric filters | Configured for: Root account usage, IAM policy changes, CloudTrail config changes, S3 bucket policy changes, failed console logins |
+| 10.2 | GuardDuty high severity | CloudWatch alarm → SNS → PagerDuty / ServiceNow on CRITICAL/HIGH findings |
+| 10.3 | Security Hub findings | Events routed to ServiceNow via EventBridge; Critical → P1 ticket |
+| 10.4 | Unused credentials | Config rule: IAM credential age > 90 days → alert |
+| 10.5 | Root account usage | CloudTrail + EventBridge rule; alert immediately on any root account API call |
+| 10.6 | Budget alerts | AWS Budgets configured per account at 80% and 100% of monthly budget |
 
 ## OS Hardening (CIS Level 2)
 

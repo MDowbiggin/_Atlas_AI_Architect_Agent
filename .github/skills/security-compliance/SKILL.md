@@ -40,28 +40,29 @@ When reviewing a design, validate against these mandatory controls:
 - [ ] Least-privilege RBAC applied
 - [ ] MFA enforced for all administrative access
 - [ ] Privileged access via PIM (just-in-time)
-- [ ] Service accounts use managed identities (no passwords)
+- [ ] Service accounts use managed identities (Azure) or IAM roles/instance profiles (AWS) — no long-lived passwords or access keys in code
+- [ ] IRSA (IAM Roles for Service Accounts) used for EKS pods (AWS)
 - [ ] Access reviews scheduled (quarterly minimum)
 
 ### Network Security
-- [ ] Network segmentation (VNet/VPC, subnets, NSGs/SGs)
+- [ ] Network segmentation (VNet/VPC, subnets, NSGs/Security Groups)
 - [ ] No public endpoints without WAF/DDoS protection
-- [ ] Private endpoints for PaaS services
+- [ ] Private endpoints for PaaS services (Azure) / VPC endpoints for AWS services
 - [ ] Firewall rules follow deny-all default
-- [ ] Azure Bastion or equivalent for admin access (no public RDP/SSH)
+- [ ] Azure Bastion (Azure) or AWS Systems Manager Session Manager (AWS) for admin access — no public RDP/SSH
 
 ### Logging & Monitoring
 - [ ] Audit logging enabled for all components
-- [ ] Logs forwarded to centralised SIEM (Sentinel/Log Analytics)
-- [ ] Minimum 90-day log retention (365 days for compliance)
-- [ ] Security alerting configured (Defender for Cloud, GuardDuty)
+- [ ] Logs forwarded to centralised SIEM (Sentinel/Log Analytics for Azure; CloudWatch + Security Hub for AWS)
+- [ ] Minimum 90-day log retention (365 days for compliance; 6 years for HIPAA audit logs)
+- [ ] Security alerting configured (Defender for Cloud for Azure; GuardDuty + Security Hub for AWS)
 - [ ] Dynatrace security analytics enabled
 
 ### Patch Management
-- [ ] Automated OS patching (Azure Update Management / AWS Systems Manager)
+- [ ] Automated OS patching (Azure Update Management for Azure / AWS Systems Manager Patch Manager for AWS)
 - [ ] Application patching per vendor schedule
 - [ ] Critical patches applied within 14 days; high within 30 days
-- [ ] Patch compliance reported monthly
+- [ ] Patch compliance reported monthly (via Azure Update Manager or AWS Config conformance pack)
 
 ### Incident Response
 - [ ] Incident response procedure documented

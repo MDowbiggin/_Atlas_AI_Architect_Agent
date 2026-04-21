@@ -58,7 +58,10 @@ When designing a solution, check for similar previous designs:
 | **Microsoft Azure** | [Microsoft Learn — Azure](https://learn.microsoft.com/en-us/azure/) | Service documentation, SKU details, pricing, SLAs |
 | **Microsoft Azure — Architecture Center** | [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/) | Reference architectures, design patterns, best practices |
 | **Amazon Web Services** | [AWS Documentation](https://docs.aws.amazon.com/) | Service documentation, instance types, pricing |
-| **AWS — Well-Architected** | [AWS Well-Architected](https://aws.amazon.com/architecture/well-architected/) | Framework pillars, lens guidance |
+| **AWS — Architecture Center** | [AWS Architecture Center](https://aws.amazon.com/architecture/) | Reference architectures, design patterns, best practices by technology domain |
+| **AWS — Prescriptive Guidance** | [AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/welcome.html) | Migration patterns, modernisation strategies, implementation guides, landing zone |
+| **AWS — Well-Architected** | [AWS Well-Architected](https://aws.amazon.com/architecture/well-architected/) | Framework pillars, lens guidance, WAF Tool |
+| **AWS — re:Post** | [AWS re:Post](https://repost.aws/) | Community Q&A; official AWS answers; curated knowledge base |
 | **VMware** | [VMware Docs](https://docs.vmware.com/) | vSphere, vSAN, NSX documentation |
 | **Terraform** | [Terraform Registry](https://registry.terraform.io/) | Provider docs, module registry |
 | **Dynatrace** | [Dynatrace Docs](https://docs.dynatrace.com/) | OneAgent deployment, API reference, configuration |
