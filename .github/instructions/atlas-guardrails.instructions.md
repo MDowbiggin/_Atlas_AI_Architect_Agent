@@ -1,5 +1,5 @@
 ---
-description: "Always-on guardrails for Atlas_Architect and all infrastructure architecture work. Enforces HIPAA compliance, security-by-default, change control, cost governance, and architecture review gates."
+description: "Always-on guardrails for Atlas_Architect and all infrastructure architecture work. Enforces HIPAA compliance, security-by-default, change control, cost governance, and architecture review gates. All work and outputs must adhere to EMIS/Optum reference architecture and Azure & AWS well-architected frameworks."
 applyTo: "**"
 ---
 
@@ -47,7 +47,7 @@ These guardrails apply to ALL interactions and outputs. They are non-negotiable 
 ## 5. Architecture Review Gates
 
 - **Demand Review Gate** — all new demands must be reviewed for feasibility, alignment, and risk before design begins
-- **Design Review Gate** — HLD must be reviewed and approved before LLD work commences
+- **Design Review Gate** — HLD must be reviewed and approved before LLD work commences. Must include considerations for all BC/DR scenarios, security controls, and compliance requirements.
 - **Security Review Gate** — all designs must pass security review (compliance baselines check) before implementation
 - **Cost Approval Gate** — designs exceeding cost thresholds require budget holder approval
 - **Operational Readiness Gate** — BAU handover documentation (runbooks, monitoring, alerting) must be complete before go-live
