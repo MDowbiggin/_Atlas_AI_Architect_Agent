@@ -227,6 +227,24 @@ graph TB
 |---|--------|-------|----------|
 | 1 | [Source] | [Title] | [URL/Link] |
 
+## 11. Operational Readiness Requirements
+
+> This section must be completed before the HLD is considered ready for go-live sign-off. All items must be confirmed as **In Progress** or **Complete** before the solution progresses past the Operational Readiness Gate.
+
+| Requirement | Owner | Status | Link / Notes |
+|-------------|-------|--------|--------------|
+| Runbook produced and peer-reviewed | Solutions Architect | ✅ / ❌ / In Progress | [Link to runbook] |
+| CMDB CIs created with relationships | PIMS / CloudOps | ✅ / ❌ / In Progress | [CI numbers] |
+| Monitoring dashboards configured (Dynatrace) | PIMS / Monitoring | ✅ / ❌ / In Progress | [Dashboard link] |
+| Alerting profiles active and routed to ServiceNow | PIMS / Monitoring | ✅ / ❌ / In Progress | [Alert policy name] |
+| Backup configured and first backup verified | CloudOps | ✅ / ❌ / In Progress | [Vault / policy] |
+| DR failover test completed | Solutions Architect + PIMS | ✅ / ❌ / In Progress | [DR test sign-off] |
+| Patching schedule configured in Azure Update Manager | CloudOps | ✅ / ❌ / In Progress | [Policy name] |
+| PIMS knowledge transfer completed | Solutions Architect | ✅ / ❌ / In Progress | [KT session date] |
+| ServiceNow KB article published | PIMS | ✅ / ❌ / In Progress | [KB article number] |
+| Certificate and secret expiry alerts configured | PIMS | ✅ / ❌ / In Progress | [Key Vault / alert] |
+| Change and incident process confirmed with support team | PIMS Team Lead | ✅ / ❌ / In Progress | |
+
 ## Appendices
 
 - Appendix A: Detailed BoM
@@ -248,3 +266,4 @@ Every HLD must include:
 - [ ] Implementation Plan
 - [ ] Risk Register
 - [ ] References
+- [ ] Operational Readiness Requirements

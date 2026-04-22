@@ -127,7 +127,7 @@ When designing infrastructure that handles PHI:
 - [ ] Break-glass access procedure is documented and tested
 - [ ] Business Associate Agreements (BAA) are in place for all third-party services handling PHI
 - [ ] Cloud services used for PHI are HIPAA-eligible (Azure: BAA covers most services; AWS: BAA covers specified services — see list below)
-- [ ] Business Associate Agreements (BAA) are in place for all third-party services handling PHI
+- [ ] Breach notification procedure documented and tested (60-day notification requirement known by key stakeholders)
 
 ## AWS HIPAA Compliance Guidance
 

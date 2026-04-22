@@ -20,19 +20,31 @@ PIMS (Platforms Infrastructure Managed Services) aims to:
 
 ## Work Management
 
+### PIMS Disciplines
+
+PIMS operates across six operational disciplines:
+
+| Discipline | Description |
+|------------|-------------|
+| **CloudOps** | Azure and AWS platform operations, resource provisioning, cost monitoring |
+| **SRE** | Observability, Dynatrace, synthetic monitoring, SLO/SLI, reliability |
+| **DBA** | Database platform management, backup, performance, HA/DR |
+| **Platforms** | Backstage/IDP, Software Catalog, gold paths, IaC tooling, Platforms Engineering |
+| **Operations** | ServiceNow ITOM, CMDB, change management, incident management |
+| **FinOps** | Cloud cost governance, reserved capacity, tagging compliance, cost reporting |
+
 ### Azure DevOps (ADO) Board
 
-PIMS work is organised across the following ADO workstreams:
+PIMS delivery work is organised across the following outcome team workstreams. All work enters via **Aha!** for backlog/roadmap management before flowing to ADO:
 
-| Workstream | Scope |
-|------------|-------|
-| **El Capitan** | BAU operations, DK & BB, KTLO metrics |
-| **Blanc** | Falklands, Sirona, Jersey, Gibraltar, project delivery, R&D |
-| **Everest** | Security team / ESRO, BAU, R&D |
-| **Snowden** | Wales delivery |
-| **Rising Sun Remediation** | Contacts: Philip Mais / Chris King |
-
-**AHA** is used for backlog and roadmap management.
+| Workstream | Scope | Notes |
+|------------|-------|-------|
+| **El Capitan** | BAU operations, DK & BB, KTLO metrics | Primary BAU outcome team |
+| **Blanc** | Falklands, Sirona, Jersey, Gibraltar, project delivery, R&D | Cross-site project delivery |
+| **Everest** | Security team / ESRO, BAU, R&D | Security-focused outcome team |
+| **Snowden** | Wales delivery | Regional delivery outcome team |
+| **Genesis AI** | Genesis AI platform, IDP innovation, automation tooling, AI agent development, AIOps | AI & platform innovation outcome team |
+| **Rising Sun Remediation** | Security tool migration programme (CrowdStrike, Tenable, Delinea, Darktrace) | Contacts: Philip Mais / Chris King — active programme, not a persistent outcome team |
 
 Reference: [PIMS Confluence Work Ingress Process](https://emishealthgroup.atlassian.net/wiki/spaces) (internal)
 
@@ -68,7 +80,7 @@ Key active SIPs:
 
 ---
 
-## Observability: Dynatrace
+## Observability: Dynatrace (SRE Discipline)
 
 **What it is**: SRE and observability platform. Used for dashboards, synthetic monitoring, and alerting across EMIS Health and EMIS-X environments.
 
@@ -88,7 +100,7 @@ Key active SIPs:
 
 ---
 
-## Vulnerability Management: Tenable Nessus / tenable.io
+## Vulnerability Management: Tenable Nessus / tenable.io (Operations / Security Discipline)
 
 **What it is**: Vulnerability scanning platform managed by ESRO. All deployments are migrating to tenable.io Cloud Platform (port 443).
 
@@ -124,7 +136,7 @@ Key active SIPs:
 
 ---
 
-## Privileged Access Management: Delinea Secret Server
+## Privileged Access Management: Delinea Secret Server (Operations Discipline)
 
 **What it is**: PAM (Privileged Access Management) platform. Also used for SSH proxy (Pinnacle) and syslog forwarding to SIEM.
 
@@ -202,7 +214,7 @@ Key contacts for access: Rich Davies, Matt Jackson, Nabeel
 
 ---
 
-## Virtualisation Platform: VMware vSAN / vCenter
+## Virtualisation Platform: VMware vSAN / vCenter (Platforms Discipline)
 
 **Renewal due**: October 2026 (Broadcom licensing)
 
@@ -241,7 +253,44 @@ Key contacts for access: Rich Davies, Matt Jackson, Nabeel
 
 ---
 
-## AI Platforms
+## FinOps (FinOps Discipline)
+
+**What it is**: Cloud financial operations — ensuring infrastructure spend is visible, accountable, and optimised across AWS and Azure. FinOps is the responsibility of the CloudOps discipline leads, with Finance BP support.
+
+### FinOps Practices
+
+| Practice | Description | Cadence |
+|----------|-------------|--------|
+| **Cost Reporting** | Monthly cost reports per cost centre; budget vs. actual; anomaly alerts | Monthly |
+| **Right-Sizing** | Utilisation analysis via Dynatrace/Azure Advisor/AWS Cost Explorer; resize recommendations | Quarterly |
+| **Reserved Capacity** | AWS Savings Plans/RIs and Azure RIs — purchase decisions, utilisation monitoring, coverage targets (target: 70% of eligible workloads) | Monthly review |
+| **Tagging Compliance** | Enforce mandatory tags (CostCentre, Env, Owner, App, Project); untagged resource alerting; chargeback enablement | Continuous |
+| **Cost Anomaly Detection** | Monitor unexpected spend spikes; alert via CloudOps | Continuous |
+| **FinOps Governance Gate** | New designs and changes >£50k ARR or >£25k one-off escalated to budget holder; >£100k ARR escalated to ARB | Per design review |
+
+### Tagging Standards
+
+All resources must carry the following mandatory tags:
+
+| Tag Key | Example Value | Purpose |
+|---------|--------------|--------|
+| `CostCentre` | `CC-INFRA-001` | Chargeback and reporting |
+| `Env` | `prod` / `dev` / `staging` | Environment identification |
+| `Owner` | `rich.davies@emis-group.com` | Operational ownership |
+| `App` | `EMISWeb` | Application / workload mapping |
+| `Project` | `rising-sun` | Project cost tracking |
+| `Tier` | `1` / `2` / `3` | DR tier classification |
+
+### FinOps Contacts
+
+| Role | Contact |
+|------|---------|
+| CloudOps Lead (FinOps) | Rich Davies, Matt Jackson |
+| Finance Business Partner | [INTERNAL — populate] |
+
+---
+
+## AI Platforms (Genesis AI Discipline)
 
 ### Genesis AI Platform
 
@@ -258,7 +307,7 @@ Key contacts for access: Rich Davies, Matt Jackson, Nabeel
 
 ---
 
-## ITOM via ServiceNow
+## ITOM via ServiceNow (Operations Discipline)
 
 ServiceNow ITOM integration is being evaluated.
 

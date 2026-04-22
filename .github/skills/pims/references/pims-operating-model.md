@@ -28,9 +28,9 @@ This document details how PIMS operates on a day-to-day basis and how other team
 | Activity | Owner | Description |
 |----------|-------|-------------|
 | Service Review | PIMS Leadership | SLA performance, incident trends, cost review, improvement actions |
-| Patching Cycle | Engineering + CloudOps | Monthly OS patching window; application patches as scheduled |
-| CMDB Reconciliation | Service Management | Reconcile CMDB against actual infrastructure |
-| Cost Review | CloudOps + Finance | Budget vs. actual; right-sizing recommendations; optimisation actions |
+| Patching Cycle | Platforms & CloudOps | Monthly OS patching window; application patches as scheduled |
+| CMDB Reconciliation | Operations | Reconcile CMDB against actual infrastructure |
+| Cost Review (FinOps) | CloudOps + FinOps + Finance BP | Budget vs. actual; right-sizing recommendations; reserved capacity utilisation; optimisation actions |
 
 ### Quarterly
 
@@ -56,17 +56,19 @@ This document details how PIMS operates on a day-to-day basis and how other team
 
 ### RACI Model (Architecture ↔ PIMS)
 
-| Activity | Architecture | PIMS | Engineering | Security | Product |
-|----------|-------------|------|-------------|----------|---------|
-| Solution Design | **R/A** | C | C | C | I |
-| Operational Readiness | **R** | **A** | C | C | I |
-| Handover to BAU | **R** | **A** | C | I | I |
-| Incident Response | C | **R/A** | C | C | I |
-| Change Implementation | C | **R/A** | C | C | I |
-| Patching & Updates | I | **R/A** | C | C | I |
-| Cost Optimisation | C | **R/A** | I | I | I |
-| Security Compliance | C | C | C | **R/A** | I |
-| DR Testing | C | **R** | C | I | **A** |
+| Activity | Architecture | CloudOps | SRE | DBA | Platforms | Operations | FinOps | Security |
+|----------|-------------|----------|-----|-----|-----------|------------|--------|----------|
+| Solution Design | **R/A** | C | C | C | C | I | I | C |
+| Operational Readiness | **R** | C | **A** | C | C | **A** | I | C |
+| Handover to BAU | **R** | C | C | C | C | **A** | I | I |
+| Incident Response | C | C | **R/A** | C | C | C | I | C |
+| Change Implementation | C | **R/A** | C | C | C | **A** | I | C |
+| Patching & Updates | I | **R/A** | I | C | C | C | I | C |
+| Database Platform Ops | I | I | I | **R/A** | I | I | I | I |
+| Cloud Cost Optimisation | C | **R** | I | I | I | I | **A** | I |
+| FinOps Reporting | I | **R** | I | I | I | I | **A** | I |
+| Security Compliance | C | C | C | C | C | C | I | **R/A** |
+| DR Testing | C | C | **R** | C | C | I | I | I |
 
 *R = Responsible, A = Accountable, C = Consulted, I = Informed*
 
@@ -75,7 +77,7 @@ This document details how PIMS operates on a day-to-day basis and how other team
 ### Technical Escalation
 
 ```
-L1: On-Call Engineer → L2: Team Lead → L3: PIMS Manager → L4: Head of Infrastructure
+L1: On-Call Engineer (Operations/SRE) → L2: Discipline Lead (CloudOps/SRE/DBA/Platforms/FinOps) → L3: PIMS Manager → L4: Head of Infrastructure
 ```
 
 ### Management Escalation
@@ -89,9 +91,11 @@ PIMS Team Lead → PIMS Manager → Head of Infrastructure → CTO/CIO
 | Scenario | Escalate To |
 |----------|-------------|
 | Application-level issue | Engineering/App Support team lead |
-| Security incident | Security Operations → CISO |
+| Security incident | Security Operations (ESRO) → CISO |
 | Network outage (ISP/carrier) | Network Operations → Vendor support |
 | Cloud platform issue | CloudOps → Microsoft/AWS support (with Premier/Enterprise support) |
+| Database platform issue | DBA discipline lead → vendor support |
+| Cost anomaly or budget breach | FinOps (CloudOps) → Finance BP → budget holder |
 | Architecture design concern | Solutions Architecture team lead |
 | Commercial/budget issue | Finance business partner |
 
@@ -106,11 +110,12 @@ PIMS Team Lead → PIMS Manager → Head of Infrastructure → CTO/CIO
 
 ### Post-Incident Reviews (PIR)
 
-- Mandatory for all P1 incidents
-- Conducted within 5 business days of resolution
-- Blameless format: focus on systemic improvements
-- Actions tracked in ServiceNow; architecture consulted for design-related findings
-- Findings shared with relevant teams for cross-learning
+- Mandatory for all P1 incidents; recommended for P2 incidents with architectural implications
+- Conducted within 5 business days of resolution using the [PIR Template](../../output/references/pir-template.md)
+- Blameless format: focus on systemic improvements, not individuals
+- Actions tracked in ServiceNow; Architecture consulted for design-related findings
+- Architectural findings must generate an ADR and a tracked Aha! demand within 5 business days of PIR publication
+- Findings shared with relevant discipline leads for cross-learning
 
 ### Service Improvement Plan
 

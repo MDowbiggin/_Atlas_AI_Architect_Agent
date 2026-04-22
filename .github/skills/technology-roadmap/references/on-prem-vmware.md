@@ -4,6 +4,8 @@
 
 On-premises infrastructure remains a **tactical** platform at EMIS/Optum, primarily for legacy workloads, latency-sensitive applications, and data sovereignty requirements. The strategic direction is to migrate to Azure where possible, but on-prem will persist for specific use cases.
 
+> **Critical 2026 Decision Point**: The VMware/Broadcom licence renewal falls in **October 2026**. The Broadcom acquisition of VMware has fundamentally changed the commercial model (subscription-based, VCF bundles, elimination of perpetual licences). An architecture and commercial assessment must be completed by **Q1 2026** to inform the renewal or migration decision. See the [Broadcom/VCF Renewal Assessment](#broadcom--vmware-cloud-foundation-vcf-9-renewal-assessment) section below.
+
 ## VMware vSphere Standards
 
 ### Supported Versions
@@ -115,3 +117,68 @@ On-premises infrastructure remains a **tactical** platform at EMIS/Optum, primar
 - Update CMDB and documentation
 - Validate monitoring and alerting in Azure
 - Perform cost review against initial estimates
+
+---
+
+## Broadcom / VMware Cloud Foundation (VCF 9) Renewal Assessment
+
+### Background
+
+In November 2023, Broadcom completed its acquisition of VMware. Since then, Broadcom has:
+- Eliminated perpetual licences; moved to **subscription-only** commercial model
+- Discontinued standalone product sales (vSphere, vSAN, NSX sold separately); now sold only as **VMware Cloud Foundation (VCF)** bundles
+- Increased pricing materially for most enterprise customers
+- Reduced partner channel and created commercial uncertainty
+
+**EMIS/Optum's current VMware agreement expires October 2026**. This is a critical architectural and commercial decision point.
+
+### VMware Cloud Foundation (VCF 9) Overview
+
+VCF 9 is the current Broadcom offering. It bundles:
+
+| Component | Included in VCF |
+|-----------|----------------|
+| vSphere (ESXi + vCenter) | ✅ |
+| vSAN (hyper-converged storage) | ✅ |
+| NSX (network virtualisation + micro-segmentation) | ✅ |
+| Aria Suite (operations, automation, log insight) | ✅ (VCF+ / subscription tier) |
+| HCX (workload mobility) | ✅ (VCF+ / subscription tier) |
+
+**Licensing model**: Per-core subscription; minimum 16 cores per CPU socket; annual subscription.
+
+### Assessment Options
+
+| Option | Description | When to Consider |
+|--------|-------------|-----------------|
+| **Option A — Renew VCF 9** | Continue with VMware/Broadcom under subscription model | Significant on-prem workload commitment; 5+ year dependency; VCF features used (vSAN, NSX) |
+| **Option B — Migrate to Azure** | Accelerate cloud migration; decommission on-prem estate | Workloads are cloud-ready; Azure VMware Solution (AVS) or re-platform to native PaaS |
+| **Option C — Azure VMware Solution (AVS)** | Run VMware on dedicated Azure hardware; Microsoft-managed vSphere/vSAN/NSX; no licence renegotiation with Broadcom | Lift-and-shift without re-platforming; retain VMware operational model; managed renewal with Microsoft |
+| **Option D — Alternative Hypervisor** | Migrate from VMware to Hyper-V, Proxmox, or bare-metal | Specific workload types; high Broadcom cost sensitivity; significant re-engineering effort |
+
+### Decision Criteria
+
+When assessing the renewal, evaluate against:
+
+1. **Cost**: Compare VCF 9 subscription cost vs. Option B (cloud)/Option C (AVS)/Option D (hypervvisor change). Include migration cost (one-off) vs. increased licence cost (ongoing).
+2. **Workload suitability**: Are remaining on-prem workloads cloud-ready, or do they have specific on-prem requirements (latency, clinical systems, data sovereignty edge cases)?
+3. **Operational model**: Does the team have skills for the chosen option? AVS retains VMware skills; migration requires cloud-native upskilling.
+4. **Vendor risk**: Broadcom's commercial behaviour post-acquisition increases concentration risk; diversification has strategic value.
+5. **Strategic alignment**: Does continued on-prem investment support or conflict with the cloud-first strategy?
+
+### Assessment Timeline
+
+| Milestone | Target Date | Owner |
+|-----------|-------------|-------|
+| Complete on-prem workload inventory and cloud-readiness assessment | Q1 2026 | Infrastructure Architecture |
+| Commercial options analysis (VCF 9 vs. AVS vs. migrate) | Q1 2026 | Architecture + Commercial |
+| Submit ADR to ARB for option selection | Q2 2026 | Infrastructure Architecture |
+| ARB approval and programme initiation | Q2 2026 | ARB |
+| Contract renewal or migration programme launch | Q3 2026 | Programme / Procurement |
+| Renewal deadline | **October 2026** | CTO / Procurement |
+
+### Key Contacts
+
+- **HPe / VMware Account Team**: [INTERNAL — populate: account executive contact]
+- **Microsoft AVS Specialist**: [INTERNAL — populate: Microsoft account team contact for AVS]
+- **Broadcom Renewal Negotiation**: [INTERNAL — populate: procurement lead]
+- **Architecture Lead**: Infrastructure Solutions Architecture team

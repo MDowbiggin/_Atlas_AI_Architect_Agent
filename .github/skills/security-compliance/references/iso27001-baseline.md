@@ -21,6 +21,10 @@ The following maps ISO 27001:2022 Annex A controls to EMIS/Optum infrastructure 
 | A.5.13 | Labelling of information | Sensitivity labels via Microsoft Purview; document classification headers |
 | A.5.14 | Information transfer | Encrypted transfer protocols (TLS, SFTP); data sharing agreements |
 | A.5.15 | Access control | RBAC; least privilege; MFA; documented in design |
+| A.5.19 | Information security in supplier relationships | Vendor security assessments before adoption; commercial/security clauses in contracts |
+| A.5.20 | Addressing information security within supplier agreements | BAAs with cloud providers (AWS, Azure) for PHI; DPAs with all third-party data processors |
+| A.5.21 | Managing information security in the ICT supply chain | Software composition analysis; SBOM for containerised workloads; approved vendor list maintained |
+| A.5.22 | Monitoring, review, and change management of supplier services | Annual vendor security review; incident notification clauses; see [Supply Chain Security](../references/supply-chain-security.md) |
 | A.5.23 | Information security for cloud services | Cloud security baseline applied (this skill); CSP responsibility model documented |
 | A.5.29 | Information security during disruption | DR/BCP plans; tested annually; referenced in HLD |
 | A.5.30 | ICT readiness for business continuity | DR architecture documented; RTO/RPO defined per tier |

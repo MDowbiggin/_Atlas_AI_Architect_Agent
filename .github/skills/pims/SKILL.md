@@ -1,6 +1,6 @@
 ---
 name: pims
-description: "Platforms Infrastructure Managed Services (PIMS) operating model and cross-team coordination. Use when: designing for operational handover, understanding PIMS service catalogue, coordinating with CloudOps/Security/Engineering/Operations teams, defining SLAs/OLAs, planning BAU transitions, or understanding the PIMS team structure."
+description: "Platforms Infrastructure Managed Services (PIMS) operating model and cross-team coordination. Use when: designing for operational handover, understanding PIMS service catalogue, coordinating with CloudOps/SRE/DBA/Platforms/Operations/FinOps teams, defining SLAs/OLAs, planning BAU transitions, understanding PIMS team structure, or identifying the correct outcome team (El Capitan, Everest, Blanc, Snowden, Genesis AI)."
 ---
 
 # Platforms Infrastructure Managed Services (PIMS)
@@ -11,7 +11,10 @@ description: "Platforms Infrastructure Managed Services (PIMS) operating model a
 - Planning the handover from project delivery to BAU operations
 - Understanding the service catalogue and what PIMS supports
 - Defining Service Level Agreements (SLAs) or Operational Level Agreements (OLAs)
-- Coordinating with CloudOps, Security, Engineering, or Operations teams
+- Coordinating with CloudOps, SRE, DBA, Platforms, Operations, or FinOps disciplines
+- Engaging the SRE team for observability design, synthetic monitoring, or reliability scoring
+- Understanding the DBA function's scope for database platform management, backup, and HA/DR
+- Working with FinOps on cloud cost governance, reserved capacity strategy, or spend optimisation
 - Assessing operational readiness for a new or modified service
 - Identifying PIMS tools and platforms (Backstage, Dynatrace, Tenable, CrowdStrike, Delinea, Darktrace, ARMIS)
 - Understanding PIMS service ownership and key contacts per tool
@@ -20,7 +23,7 @@ description: "Platforms Infrastructure Managed Services (PIMS) operating model a
 - Understanding Delinea Secret Server footprint and PAM deployment locations
 - Checking VMware vSAN/vCenter estate, gold standard practices, or renewal timelines
 - Understanding cloud account read-only access (AWS Holistic-Viewer, Azure Global Reader)
-- Reviewing PIMS workstream structure (El Capitan, Blanc, Everest, Snowden)
+- Identifying which outcome team owns a workstream (El Capitan, Blanc, Everest, Snowden, Genesis AI)
 - Planning IaC deployment strategy (YAML templates, HCL, ReadMe.md standards)
 
 ## PIMS Overview
@@ -30,6 +33,16 @@ Platforms Infrastructure Managed Services (PIMS) is the operational function res
 ### PIMS Mission
 
 To deliver reliable, secure, and cost-effective infrastructure services that enable EMIS/Optum's products and business operations.
+
+### PIMS Operating Principles
+
+1. **Service Excellence** — PIMS delivers to defined SLAs/OLAs; every service has documented operational procedures and measurable uptime targets; underpinning services are continuously monitored
+2. **Automation-First** — Manual repetitive tasks are candidates for automation; IaC, AIOps, and self-service tooling reduce toil and human error; automation is a first-class operational output
+3. **Documentation-by-Default** — Every service, change, and incident generates updated documentation; Backstage Software Catalog is the target source of truth for service inventory; ReadMe.md and YAML standards apply to all managed services
+4. **Security-Embedded** — Security controls are built into operational processes, not bolted on; patching, access management, vulnerability remediation, and PAM coverage are BAU activities
+5. **Continuous Improvement** — Post-incident reviews, problem management, and service reviews drive structured improvement; learning from failures is valued and blameless; recurring issues trigger problem records and architectural review
+6. **FinOps-Aware** — Infrastructure spend is visible, accountable, and optimised; right-sizing, reserved capacity, tagging compliance, and cost-centre reporting are operational requirements, not just project activities
+7. **Outcome-Oriented** — Work is organised into outcome teams (El Capitan, Blanc, Everest, Snowden, Genesis AI) with clear scope and delivery accountability; all work enters via Aha! and is tracked in ADO
 
 ### PIMS Scope
 
@@ -44,21 +57,50 @@ To deliver reliable, secure, and cost-effective infrastructure services that ena
 | Database infrastructure (not application DBA) | Database schema changes (Engineering/DBA) |
 | IaC pipeline operations | IaC module development (Architecture/Engineering) |
 
+## PIMS Disciplines
+
+PIMS is structured around six operational disciplines. Each discipline represents a specialist capability area within the PIMS function:
+
+| Discipline | Description | Key Teams / Contacts |
+|------------|-------------|----------------------|
+| **CloudOps** | Azure and AWS platform operations, resource provisioning, cost monitoring, cloud governance | Rich Davies, Matt Jackson, Nabeel |
+| **SRE (Site Reliability Engineering)** | Observability, Dynatrace administration, synthetic monitoring, SLO/SLI management, reliability scoring, incident detection | Joseph Pemberton (JP), Robbie Frodsham, Navid Hussein |
+| **DBA (Database Administration)** | Database platform management, backups, performance tuning, high availability, disaster recovery for database tier | [INTERNAL — populate] |
+| **Platforms** | Internal Developer Platform (Backstage/IDP), Software Catalog, gold path templates, IaC tooling, automation pipelines | Dario DeVito, Luke Smith, Ian Hardcastle, John-Paul Drawneek |
+| **Operations** | Day-to-day service management, ServiceNow ITOM/CMDB, change management, incident management, problem management | Aaron Riley, James Croll, Ben De Caet, Sam Hart |
+| **FinOps** | Cloud cost governance, reserved capacity management, tagging compliance, budget vs. actuals reporting, right-sizing recommendations | CloudOps (Rich Davies, Matt Jackson) + Finance BP |
+
 ## Team Structure
+
+> The table below reflects the full team roster, mapping individuals to both their discipline and the specialist functions they support.
 
 | Team | Responsibility | Key Contacts |
 |------|---------------|-------------|
 | **CloudOps** | Azure and AWS platform operations, resource management, cost monitoring | Rich Davies, Matt Jackson, Nabeel |
-| **Infrastructure Engineering** | IaC development, automation, tooling, pipeline management | Daniel Kaminski |
+| **Site Reliability Engineering (SRE)** | Dynatrace administration, dashboard management, synthetic monitoring, SLO/SLI, reliability; Dynatrace community call Thursdays 11:00–12:00 GMT | Joseph Pemberton (JP), Robbie Frodsham, Navid Hussein |
+| **Platforms & Engineering** | IaC development, automation, tooling, pipeline management, Backstage/IDP platform | Daniel Kaminski, Dario DeVito, Luke Smith, Ian Hardcastle, John-Paul Drawneek |
 | **Network Operations** | Network infrastructure, firewalls, load balancers, DNS, VPN/ExpressRoute | Dave Nelson |
 | **Security Operations (ESRO)** | Security tooling, SIEM, vulnerability management, incident response support | David Gee, David Vine, Rob Deery, Abbie Bowes |
-| **Database Operations** | Database platform management, backups, performance, HA/DR | [INTERNAL — populate] |
-| **Monitoring & Observability** | Dynatrace administration, dashboard management, synthetic monitoring | Joseph Pemberton (JP), Robbie Frodsham, Navid Hussein |
-| **Service Management / ITOM** | ServiceNow ITOM, CMDB management, process governance | Aaron Riley (Account Manager), James Croll, Ben De Caet, Sam Hart |
-| **Platform Engineering (Backstage/IDP)** | Internal Developer Platform, Software Catalog, gold path templates | Dario DeVito, Luke Smith, Ian Hardcastle, John-Paul Drawneek, Robbie Frodsham |
+| **Database Administration (DBA)** | Database platform management, backups, performance, HA/DR | [INTERNAL — populate] |
+| **Operations & Service Management** | ServiceNow ITOM, CMDB management, change management, incident management, process governance | Aaron Riley (Account Manager), James Croll, Ben De Caet, Sam Hart |
+| **FinOps** | Cloud cost governance, reserved capacity management (AWS Savings Plans/RIs, Azure RIs), tagging compliance, monthly cost reporting, right-sizing | Rich Davies, Matt Jackson + Finance BP |
 | **PAM (Delinea)** | Privileged Access Management, Secret Server, SSH proxy | David Gee, Mark Howis, Daniel Kaminski, William Macpherson |
 | **EDR (CrowdStrike)** | Endpoint detection and response, AV platform | Chris Watts, Daniel Kaminski, David Gee, Abbie Bowes |
 | **Asset Discovery (ARMIS)** | Network asset discovery, security posture | David Gee, Rob Deery, Abbie Bowes, Martin Ward |
+
+## Outcome Teams (ADO Workstreams)
+
+PIMS delivery work is organised into outcome teams. All work enters via **Aha!** for backlog and roadmap management, then flows into **Azure DevOps (ADO)** workstreams for execution. Each outcome team has a defined scope:
+
+| Outcome Team | ADO Workstream | Scope | Notes |
+|---|---|---|---|
+| **El Capitan** | BAU Operations | BAU operations, DK & BB, KTLO (Keep The Lights On) metrics, core infrastructure BAU | Primary BAU workstream |
+| **Blanc** | Project Delivery | Falklands, Sirona, Jersey, Gibraltar, project delivery, R&D | Project/cross-site delivery |
+| **Everest** | Security & ESRO | Security team (ESRO) BAU, security R&D, compliance remediation | Security-focused workstream |
+| **Snowden** | Wales Delivery | Wales-specific infrastructure delivery and BAU | Regional delivery workstream |
+| **Genesis AI** | AI & Automation | Genesis AI platform, IDP innovation, automation tooling, AI agent development, AIOps | AI/platform innovation workstream |
+
+> Rising Sun Remediation (contacts: Philip Mais / Chris King) is an active cross-team programme tracked separately, not a persistent outcome team.
 
 ## Service Catalogue
 
@@ -97,7 +139,15 @@ To deliver reliable, secure, and cost-effective infrastructure services that ena
 | SIEM Operations | Sentinel / Log Analytics — rule management, alert triage | Real-time | 24/7 (P1/P2) |
 | Certificate Management | SSL/TLS certificate provisioning, renewal, monitoring | Pre-expiry renewal | Business hours |
 | Identity Operations | Azure AD administration, access provisioning, PIM | Per SLA | 24/7 (access issues) |
+### FinOps Services
 
+| Service | Description | SLA | Support Hours |
+|---------|-------------|-----|---------------|
+| Cloud Cost Reporting | Monthly cost report per cost centre; budget vs. actual; trend analysis | Monthly | Business hours |
+| Right-Sizing Recommendations | Utilisation analysis; over-provisioned resource identification; resize recommendations | Quarterly review | Business hours |
+| Reserved Capacity Management | AWS Savings Plans/RIs and Azure RIs — purchase decisions, utilisation monitoring, coverage targets | Monthly review | Business hours |
+| Tagging Compliance | Tag governance; compliance reporting; untagged resource alerting; chargeback enablement | Continuous | Business hours |
+| Cost Anomaly Detection | Monitoring for unexpected spend spikes; CloudOps alerting + monthly review | Continuous | Business hours |
 ## Operational Level Agreements (OLAs)
 
 ### Response and Resolution Times

@@ -106,7 +106,48 @@ EMIS/Optum uses both the **AWS Well-Architected Framework** (primary) and the **
 - Are caching strategies implemented where appropriate?
 - Are latency requirements defined and measurable?
 
-## AWS Well-Architected Framework Pillars
+### 6. Sustainability (Azure)
+
+**Goal**: Minimise the environmental footprint of cloud workloads and align with organisational net-zero commitments.
+
+| Consideration | EMIS/Optum Standard |
+|--------------|---------------------|
+| Region Selection | UK South (`uksouth`) — Microsoft targets 100% renewable energy by 2025 and operates matched renewable energy certificates; prefer UK-based regions |
+| Compute Efficiency | Right-size VMs to avoid idle/over-provisioned capacity; use B-series burstable VMs for dev/test instead of always-on premium SKUs |
+| Serverless & PaaS | Azure Functions, Container Apps, and App Service preferred over IaaS for event-driven and variable workloads — consume no resources when idle |
+| Auto-Scaling & Scheduling | Scale-to-zero or scheduled shutdown for non-production environments out-of-hours (Azure Automation / Azure DevOps scheduled pipelines) |
+| Storage Tiering | Azure Blob lifecycle management policies to transition data to Cool/Archive tiers; delete data at end of retention period per HIPAA requirements |
+| Carbon Awareness | Use Azure Carbon Optimisation in Azure Monitor to track and report on the carbon impact of Azure resources |
+| Container Density | Maximise pod density per AKS node; avoid single-workload node pools that leave capacity underutilised |
+
+**Design Review Questions**:
+- Are non-production environments configured to shut down out-of-hours?
+- Is a storage lifecycle policy applied to transition data to cooler tiers after defined periods?
+- Are serverless or PaaS options evaluated before recommending IaaS?
+- Are VMs right-sized to avoid chronic over-provisioning?
+
+## Azure Architecture Review Scorecard
+
+```markdown
+| Pillar | Score (1-5) | Evidence | Gaps | Recommendations |
+|--------|-------------|----------|------|-----------------|
+| Reliability | | | | |
+| Security | | | | |
+| Cost Optimisation | | | | |
+| Operational Excellence | | | | |
+| Performance Efficiency | | | | |
+| Sustainability | | | | |
+| **Overall** | | | | |
+```
+
+**Scoring Guide**:
+- **5** — Exceeds standards; best-practice implementation with documented evidence
+- **4** — Meets standards; minor improvements possible
+- **3** — Partially meets standards; specific gaps identified with remediation plan
+- **2** — Significant gaps; requires redesign of specific components
+- **1** — Does not meet standards; fundamental architectural concerns
+
+---
 
 AWS is the **primary cloud platform** for EMIS/Optum. The following EMIS/Optum standards apply for all AWS-hosted workloads, organised by the six AWS WAF pillars.
 

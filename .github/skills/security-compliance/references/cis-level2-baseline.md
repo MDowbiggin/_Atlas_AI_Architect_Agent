@@ -198,6 +198,51 @@ Key controls (subset — full benchmark applied via Ansible hardening role):
 - Password: minlen=14; dcredit=-1; ucredit=-1; lcredit=-1; ocredit=-1; remember=5
 - Audit: auditd enabled; rules for privileged commands, file access, user/group changes
 - Filesystem: nodev, nosuid, noexec on /tmp, /var/tmp, /dev/shm
+
+## Container & Kubernetes Hardening (CIS Benchmarks)
+
+### Docker / Container Images
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| C.1 | Base image | Use minimal, trusted base images (distroless or official vendor images); no `latest` tag in production |
+| C.2 | Non-root user | Container processes run as non-root (UID ≥ 1000); `USER` instruction set in Dockerfile |
+| C.3 | Read-only filesystem | Root filesystem mounted read-only where possible; write paths explicitly defined |
+| C.4 | No privileged containers | `--privileged` flag disallowed; validate via admission controller (OPA/Kyverno) |
+| C.5 | Secrets | No secrets in Dockerfile, environment variables, or image layers; use Azure Key Vault / AWS Secrets Manager CSI driver |
+| C.6 | Image scanning | Images scanned for CVEs in CI/CD pipeline (Trivy / ECR scanning / Defender for Containers); HIGH/CRITICAL CVEs block pipeline |
+| C.7 | Image signing | Images signed (Cosign / Notation); admission policy validates signature before deployment |
+| C.8 | SBOM | Software Bill of Materials generated for every image build; stored in registry or artefact store |
+
+### AKS (Azure Kubernetes Service)
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| AKS.1 | Private cluster | API server is private (not internet-accessible) |
+| AKS.2 | Azure AD integration | Azure AD authentication enabled; RBAC at cluster and namespace level |
+| AKS.3 | Workload Identity | Workload Identity used for pod-level Azure access; no service account tokens with Azure permissions |
+| AKS.4 | Network policy | Network policies enforced (Calico or Azure CNI); default deny between namespaces |
+| AKS.5 | Node hardening | CIS Level 2 OS hardening applied to node pools; auto-upgrades enabled for patch releases |
+| AKS.6 | Admission control | OPA Gatekeeper or Kyverno deployed; policies enforce: no privileged, no latest tag, non-root user, resource limits |
+| AKS.7 | Secret encryption | etcd secrets encrypted at rest with CMK |
+| AKS.8 | Audit logging | Kubernetes audit logs and diagnostic settings forwarded to Log Analytics |
+| AKS.9 | Container insights | Azure Monitor Container Insights enabled; Dynatrace OneAgent DaemonSet deployed |
+| AKS.10 | Image pull | Images pulled only from ACR (private); `imagePullPolicy: Always` for production workloads |
+
+### EKS (AWS Elastic Kubernetes Service)
+
+| # | Control | Requirement |
+|---|---------|-------------|
+| EKS.1 | Private endpoint | EKS cluster API endpoint private; no public access (or restricted to known CIDRs if unavoidable) |
+| EKS.2 | IRSA | IAM Roles for Service Accounts (IRSA) used for all pod-level AWS access; no EC2 instance profile with broad permissions |
+| EKS.3 | Network policy | Calico or VPC-CNI network policies enforced; default deny between namespaces |
+| EKS.4 | Node hardening | CIS AL2/AL2023 benchmark on node groups; managed node groups preferred; launch template with hardened AMI |
+| EKS.5 | IMDSv2 | IMDSv2 required on EKS nodes (hop limit = 1 for containers) |
+| EKS.6 | Secrets encryption | Kubernetes secrets encrypted with a KMS CMK (envelope encryption) |
+| EKS.7 | Admission control | OPA Gatekeeper or Kyverno; policies match AKS.6 above |
+| EKS.8 | Audit logging | EKS control plane logging enabled (API, audit, authenticator, scheduler, controller manager) → CloudWatch Logs |
+| EKS.9 | GuardDuty for EKS | GuardDuty EKS Protection enabled (Runtime Monitoring + Audit Log monitoring) |
+| EKS.10 | ECR image scanning | ECR enhanced scanning enabled; CRITICAL findings block deployment via deployment policy |
 - Network: IP forwarding disabled; ICMP redirects rejected; TCP SYN cookies enabled
 - Services: Disable unused services (avahi, cups, dhcpd); firewalld enabled
 - SELinux: Enforcing mode; targeted policy

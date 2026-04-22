@@ -104,3 +104,111 @@ Microsoft Azure is the **strategic secondary cloud platform** for EMIS/Optum. Us
 - **Management Groups** for hierarchical policy inheritance
 - **Resource Locks** on production resources (CanNotDelete minimum)
 - **Azure Cost Management** with budget alerts and advisor recommendations
+
+---
+
+## Monitoring & Observability
+
+### Azure Monitor & Log Analytics
+
+| Component | Standard |
+|-----------|----------|
+| **Log Analytics Workspace** | One workspace per environment (prod, non-prod); centralised workspace for security logs |
+| **Diagnostic Settings** | All resources must emit diagnostic logs to Log Analytics; use Azure Policy to enforce |
+| **Metrics** | Platform metrics auto-collected by Azure Monitor; custom metrics via Application Insights SDK |
+| **Retention** | Hot tier: 30 days (Log Analytics); Cold/archive tier: 12 months minimum (for regulatory compliance) |
+| **Alerts** | Metric and log-based alert rules; action groups route to PagerDuty (P1/P2) and email (P3/info) |
+| **Workbooks** | Use Azure Monitor Workbooks for operational dashboards; share across the EMIS Architecture management group |
+
+**Standards**:
+- Every Azure resource must have diagnostic settings configured (enforce via Azure Policy)
+- Dynatrace OneAgent deployed on all VMs and AKS node pools for application-level observability (Azure Monitor for platform, Dynatrace for APM)
+- Application Insights connected to all Azure App Service and Azure Functions workloads
+- Azure Network Watcher enabled in all subscriptions; NSG Flow Logs version 2 to storage and Log Analytics with Traffic Analytics
+
+### Microsoft Defender for Cloud
+
+Microsoft Defender for Cloud is the **mandatory cloud security posture management (CSPM)** platform for all Azure subscriptions.
+
+| Plan | Scope | Notes |
+|------|-------|-------|
+| **Defender CSPM** | All subscriptions | Cloud Security Posture Management; Secure Score monitoring |
+| **Defender for Servers Plan 2** | All production servers (VMs, ARC-enrolled on-prem) | Includes Microsoft Defender Antivirus, JIT VM Access, file integrity monitoring |
+| **Defender for Containers** | All AKS clusters | Kubernetes threat detection, image scanning, admission control |
+| **Defender for SQL** | All Azure SQL and PostgreSQL instances | SQL injection detection, anomalous query alerts |
+| **Defender for Storage** | All storage accounts with sensitive data | Malware scanning, anomalous access detection |
+| **Defender for Key Vault** | All Key Vaults | Unusual access, exfiltration attempts |
+| **Defender for App Service** | All App Service plans | Threat detection for web application attacks |
+
+**Standards**:
+- Defender for Cloud Secure Score minimum threshold: **75%** (alert below; track as a KPI)
+- Enable all Defender plans in production subscriptions; Defender CSPM minimum in all subscriptions
+- Security alerts from Defender for Cloud flow to Microsoft Sentinel (or Log Analytics Security workspace) for SIEM correlation
+- CIS Azure v2.0 compliance benchmark enabled in all subscriptions; resolve High findings within 30 days
+
+### Azure Application Insights
+
+- Connect to Azure App Service, Azure Functions, and AKS workloads
+- Enable **distributed tracing** for microservices (correlation IDs across service boundaries)
+- **Smart Detection**: Enable for anomaly detection on response times, failure rates
+- **Availability tests**: Minimum one URL ping test per external endpoint; target: 99.9% availability
+- Sampling: Configure adaptive sampling for high-throughput workloads to control data volume and cost
+
+---
+
+## API Management (Azure APIM)
+
+Azure API Management is the **strategic API gateway** for Azure-hosted APIs exposed internally or externally.
+
+### Use Cases
+
+| Scenario | APIM Tier |
+|----------|-----------|
+| Production APIs (external or internal) | Standard v2 or Premium |
+| Development / test APIs | Developer (non-SLA) |
+| High-scale, multi-region | Premium with multiple units |
+
+### Standards
+
+- **Networking**: APIM in internal mode (private VNet injection); external gateway via Azure Front Door / Application Gateway + WAF
+- **Authentication**: OAuth 2.0 / OIDC with Entra ID; validate JWT tokens in inbound policy
+- **Rate Limiting**: Apply `rate-limit-by-key` and `quota` policies to all product subscriptions; prevent abuse
+- **Versioning**: API versioning via URL path (`/v1/`, `/v2/`) or header; never break existing API versions without deprecation notice
+- **Backend security**: Mutual TLS or managed identity for APIM-to-backend connections
+- **Caching**: Enable response caching where appropriate to reduce backend load
+- **Monitoring**: Enable Application Insights integration for all APIs; log requests, responses, and errors
+- **Developer Portal**: Enable and maintain the developer portal for internal API consumers
+- **Named Values**: Store secrets in Key Vault and reference as Named Values (never hardcode keys in policies)
+
+### Policy Standards
+
+```xml
+<!-- Mandatory inbound policies for all APIs -->
+<inbound>
+    <validate-jwt header-name="Authorization" failed-validation-httpcode="401">
+        <openid-config url="https://login.microsoftonline.com/{tenantId}/.well-known/openid-configuration" />
+        <audiences><audience>{audience}</audience></audiences>
+    </validate-jwt>
+    <rate-limit-by-key calls="1000" renewal-period="60" counter-key="@(context.Subscription?.Key ?? 'anonymous')" />
+    <set-header name="X-Request-ID" exists-action="skip">
+        <value>@(context.RequestId)</value>
+    </set-header>
+</inbound>
+```
+
+---
+
+## Azure Front Door
+
+Use Azure Front Door for global HTTP/HTTPS load balancing, WAF protection, and CDN for internet-facing workloads.
+
+### Standards
+
+- **SKU**: Standard or Premium (Premium for Private Link origin, Managed WAF rules, Bot protection)
+- **WAF**: Enable WAF with Microsoft-managed rule sets (OWASP 3.2 + additional bot protection rules); mode set to **Prevention** (not Detection) in production
+- **HTTPS only**: Redirect HTTP to HTTPS; enforce minimum TLS 1.2
+- **Origin**: Use Private Link to connect to Azure origins (App Service, Load Balancer, Storage) — no public endpoints required
+- **Routing**: Use route patterns to separate static content (CDN caching) from API traffic (no-cache)
+- **Health Probes**: Configure health probes per origin group; use HTTPS probes; set appropriate probe intervals
+- **Custom Domains**: All custom domains must have certificates managed via Azure-managed certificates or Key Vault integration
+- **Logging**: Enable diagnostic logs to Log Analytics; access logs for WAF analysis

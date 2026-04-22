@@ -1,6 +1,6 @@
 ---
 name: decision-making
-description: "Architecture decision records, demand reviews, and option analysis frameworks. Use when: documenting architecture decisions (ADRs), conducting demand reviews, evaluating options with weighted scoring, performing trade-off analysis, assessing go/no-go criteria, or producing decision documentation."
+description: "Architecture decision records, demand reviews, and option analysis frameworks. Use when: documenting architecture decisions (ADRs), conducting demand reviews, evaluating options with weighted scoring, performing trade-off analysis, assessing go/no-go criteria, producing ARB submissions, requesting exceptions/derogations from standards, managing project risk registers, or producing decision documentation."
 ---
 
 # Outcome & Decision Making
@@ -13,6 +13,11 @@ description: "Architecture decision records, demand reviews, and option analysis
 - Performing trade-off analysis between competing approaches
 - Assessing go/no-go criteria for a project or deployment
 - Producing decision documentation for Architecture Review Board (ARB)
+- Preparing and submitting an ARB paper for review or new technology introduction
+- Requesting a formal exception or derogation from an approved standard or technology
+- Managing and maintaining a project or programme risk register
+- Documenting a formal risk acceptance decision
+- Conducting a post-incident architectural review to capture learning and drive design improvement
 
 ## Decision-Making Principles
 
@@ -22,6 +27,10 @@ description: "Architecture decision records, demand reviews, and option analysis
 4. **Reversible where possible** — Prefer decisions that can be changed later without catastrophic cost
 5. **Timely** — Decisions are made at the latest responsible moment — enough information to reduce risk, early enough to maintain momentum
 6. **Accountable** — Every decision has a named decision-maker and a review/approval chain
+7. **Proportionate** — The rigour and formality of the decision process must match the significance, cost, and reversibility of the decision; lightweight decisions (XS/S) do not need full ADR treatment; high-impact or irreversible decisions (L/XL, or meeting ARB escalation criteria) must follow the full process
+8. **Stakeholder-inclusive** — Key stakeholders are identified and consulted before decisions are finalised; decisions that affect PIMS, Security, Engineering, or Product must include those teams' input before sign-off
+9. **Risk-informed** — Risks are explicitly identified, quantified, and either mitigated or formally accepted; accepted risks have a named risk owner and are tracked in the project risk register
+10. **Learn and Improve** — Post-incident and post-project reviews feed back into the architecture decision record; decisions that proved wrong are documented so the organisation learns
 
 ## Procedure
 
@@ -75,6 +84,58 @@ Once a demand is approved for progression, complete the full demand review:
 5. Calculate weighted totals
 6. Document trade-offs and risk implications
 7. Recommend an option with supporting rationale
+
+### For ARB Submissions
+
+Some decisions must be escalated to the Architecture Review Board. Submit when any of the following apply:
+- New technology introduction (not on the approved roadmap)
+- Significant departure from EMIS/Optum architecture standards
+- Annual cost implication > £100,000
+- Cross-team or cross-platform impact
+- Security or compliance risk that cannot be fully mitigated
+
+1. Confirm the demand meets ARB escalation criteria
+2. Prepare the ARB submission paper — see [ARB Guidance](./references/arb-guidance.md)
+3. Submit to the Architecture Review Board at least 5 business days before the ARB session
+4. Present the paper and respond to questions at the ARB session
+5. Record the ARB decision (Approved / Approved with conditions / Deferred / Rejected) as an ADR
+6. If approved with conditions, track conditions to closure and confirm with ARB chair
+
+### For Exceptions and Derogations from Standards
+
+When a project cannot comply with an approved standard and a variance is needed:
+
+1. Identify the specific standard or policy from which a derogation is being requested
+2. Document the business justification for the variance
+3. Assess the risk introduced by the variance
+4. Identify compensating controls that reduce the risk to an acceptable level
+5. Complete the Exception/Derogation template — see [Exception & Derogation Template](./references/exception-derogation-template.md)
+6. Route for approval: Security (for security/compliance derogations) + Senior Architect + ARB if appropriate
+7. Record the approved derogation with expiry date and review trigger
+8. Track all open derogations in the project risk register
+
+### For Risk Acceptance Decisions
+
+When a risk cannot be mitigated and must be formally accepted:
+
+1. Document the risk in the risk register — see [Risk Register Template](./references/risk-register-template.md)
+2. Quantify the risk: likelihood (1–5), impact (1–5), risk score (L×I)
+3. Confirm that all reasonable mitigations have been explored and documented
+4. Identify the risk owner (the person accountable if the risk materialises)
+5. Route for sign-off: CISO for security/compliance risks; CTO/VP Engineering for architectural risks; budget holder for cost risks
+6. Record the sign-off name, date, and review date in the risk register
+7. Review the risk register at each project milestone
+
+### For Post-Incident Architectural Reviews
+
+After a P1 or P2 incident with architectural implications:
+
+1. Conduct the blameless post-incident review (PIR) within 5 business days (PIMS-led)
+2. Identify any architectural root causes or contributing factors
+3. For each architectural finding, create an ADR or update an existing one to capture the learning
+4. Raise remediation work as a demand in Aha! or ADO — do not rely on the PIR action list alone
+5. Review the finding against BC/DR design guide and Well-Architected pillars — is the gap systemic?
+6. Update relevant HLD/LLD artefacts to reflect the corrected design
 
 ## Option Analysis Framework
 
@@ -186,3 +247,6 @@ Use this framework before major deployments or go-live decisions:
 - [Architecture Assessment Template](./references/architecture-assessment-template.md) — Aha! demand triage scoring template (Stage 1)
 - [Demand Review Checklist](./references/demand-review-checklist.md) — Full pre-design demand review (Stage 2)
 - [ADR Template](./references/adr-template.md) — Architecture Decision Record template
+- [ARB Guidance](./references/arb-guidance.md) — When to escalate to ARB, submission structure, presentation guidance
+- [Exception & Derogation Template](./references/exception-derogation-template.md) — Formal process for requesting variances from approved standards
+- [Risk Register Template](./references/risk-register-template.md) — Project and programme risk tracking, risk acceptance, and review cadence

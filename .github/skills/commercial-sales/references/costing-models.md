@@ -135,3 +135,72 @@ EMIS/Optum typically uses a hybrid approach:
 | **Dev/Test pricing** | Azure Dev/Test subscription pricing (no Windows licence cost, reduced rates) |
 | **Savings Plans** | AWS Savings Plans / Azure Savings Plan for Compute (flexible commitment) |
 | **Spot/Preemptible** | 60-90% savings for interruptible workloads (CI/CD, batch, testing) |
+
+---
+
+## EMIS/Optum Cost Governance Thresholds
+
+These thresholds are mandatory guardrails. Every cost estimate must be checked against them.
+
+| Threshold | Value | Action Required |
+|-----------|-------|----------------|
+| Annual Recurring Cost | > £50,000 | Flag in BoM / demand review; budget holder approval required before design is approved |
+| One-Off Cost | > £25,000 | Flag in BoM; budget holder approval required |
+| Cost Increase vs. Baseline | > 20% | Flag with justification; budget holder approval required |
+| ARB Cost Threshold | > £100,000 annual | Submit to Architecture Review Board in addition to budget holder approval |
+
+### Cost Escalation Process
+
+When a threshold is breached:
+
+1. Note the breach clearly in the Cost Summary section of the BoM or demand review
+2. Include justification for the cost level relative to business value
+3. Identify the budget holder and route for approval before proceeding to design
+4. Record the approval in the relevant ADO work item or ServiceNow change/request
+
+---
+
+## AWS Cost Optimisation Models
+
+AWS is the primary cloud platform. Apply these models in all AWS BoMs.
+
+### Savings Plans
+
+| Type | Flexibility | Savings vs. On-Demand | Commitment |
+|------|------------|----------------------|------------|
+| **Compute Savings Plan** | Any instance family, region, OS, tenancy | Up to 66% | 1yr or 3yr hourly spend commitment |
+| **EC2 Instance Savings Plan** | Specific instance family + region | Up to 72% | 1yr or 3yr hourly spend commitment |
+| **Lambda Savings Plan** | Lambda only | Up to 17% | 1yr or 3yr |
+
+**EMIS/Optum standard**: ≥ 70% of steady-state compute should be covered by Compute Savings Plans. Review coverage quarterly.
+
+### Reserved Instances (AWS RDS, ElastiCache, Redshift)
+
+| Service | 1yr Saving | 3yr Saving | When to Use |
+|---------|-----------|-----------|------------|
+| RDS | ~30% | ~50% | Stable production databases |
+| ElastiCache | ~30% | ~50% | Persistent Redis caches |
+| Redshift | ~30% | ~50% | Data warehouse nodes |
+| OpenSearch | ~30% | ~50% | Search clusters |
+
+### Spot Instances
+
+| Use Case | Eligible? | Notes |
+|----------|----------|-------|
+| Dev/Test EC2 | ✅ | Use Spot with OD fallback in launch template |
+| CI/CD agents | ✅ | Build jobs re-queued on interruption |
+| EKS worker nodes | ✅ | Mixed node groups; ~80% Spot, 20% OD |
+| Batch processing | ✅ | Design for interruption (checkpointing) |
+| Production stateful services | ❌ | Use RI/Savings Plans |
+| Production databases | ❌ | Use RDS Reserved Instances |
+
+### Graviton (arm64) Pricing Benefit
+
+Graviton instances offer ~20% better price/performance vs. x86 at the same generation. Always evaluate for new workloads and document any compatibility constraint that prevents adoption.
+
+| Service | Graviton Example | vs. x86 Equivalent Saving |
+|---------|-----------------|--------------------------|
+| EC2 | `m7g` vs. `m7i` | ~15-20% |
+| RDS | `r7g` vs. `r7i` nodes | ~15-20% |
+| Lambda | `arm64` vs. `x86_64` | ~20% |
+| EKS nodes | Graviton node groups | ~15-20% |

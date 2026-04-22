@@ -66,3 +66,21 @@ The following sub-topics provide detailed guidance on each security area:
 | **SQL Injection** | ARCH/SQL+Injection | SQL injection prevention |
 | **WAF Rule Sets** | ARCH/WAF+Rule+Sets | Web Application Firewall configuration |
 | **AWS Confused Deputy** | ARCH/AWS+Confused+Deputy | AWS cross-account access security |
+
+---
+
+## Detailed Security Baselines
+
+The following compliance baselines and security deep-dive guides are maintained in the **security-compliance** skill and provide detailed control frameworks, checklists, and assessment templates:
+
+| Reference | Path | Purpose |
+|-----------|------|---------|
+| **HIPAA Security Baseline** | [../../security-compliance/references/hipaa-baseline.md](../../security-compliance/references/hipaa-baseline.md) | HIPAA Administrative, Physical, and Technical Safeguards; BAA requirements; breach notification |
+| **NIST CSF Baseline** | [../../security-compliance/references/nist-baseline.md](../../security-compliance/references/nist-baseline.md) | NIST Cybersecurity Framework control mapping; SP 800-53 controls; AWS/Azure implementation guidance |
+| **CIS Level 2 Baseline** | [../../security-compliance/references/cis-level2-baseline.md](../../security-compliance/references/cis-level2-baseline.md) | CIS Benchmark Level 2 controls for AWS, Azure, Linux, Windows containers, and Kubernetes |
+| **ISO 27001 Baseline** | [../../security-compliance/references/iso27001-baseline.md](../../security-compliance/references/iso27001-baseline.md) | ISO/IEC 27001:2022 Annex A controls; supplier controls A.5.19–A.5.22 |
+| **Zero Trust Assessment** | [../../security-compliance/references/zero-trust-assessment.md](../../security-compliance/references/zero-trust-assessment.md) | 6-pillar Zero Trust assessment template; EMIS/Optum current-state scoring (/18) |
+| **Supply Chain Security** | [../../security-compliance/references/supply-chain-security.md](../../security-compliance/references/supply-chain-security.md) | SBOM requirements; image signing; dependency management; vendor security assessment |
+| **Secure IaC Pipeline** | [../../security-compliance/references/secure-iac-pipeline.md](../../security-compliance/references/secure-iac-pipeline.md) | IaC pipeline security; OIDC standards; scanner matrix; Terraform state security; ADO/GitHub examples |
+
+> **Note**: The security-compliance skill is the authoritative source for compliance control lists and assessment frameworks. This document provides the contextual "why" and EMIS/Optum requirements; the security-compliance skill provides the detailed "how" and evidence checklists.
