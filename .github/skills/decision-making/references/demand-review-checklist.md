@@ -65,7 +65,7 @@ Every incoming demand (new infrastructure request, change to existing architectu
 
 | Dimension | Estimate | Rationale |
 |-----------|----------|-----------|
-| **T-Shirt Size** | S / M / L / XL | [Overall complexity justification] |
+| **T-Shirt Size** | XS / S / M / L / XL | [Overall complexity justification] |
 | **Estimated Effort** | X person-days | [Breakdown: design, build, test, handover] |
 | **Estimated Cost** | £XX,XXX - £XX,XXX (ROM) | [Rough order of magnitude] |
 | **Estimated Duration** | X weeks/months | [Including all phases] |
@@ -133,7 +133,8 @@ graph TD
 
 | Size | Characteristics | Typical Effort | Examples |
 |------|----------------|---------------|---------|
-| **S (Small)** | Single component; standard pattern; no new technologies; no cross-team dependencies | 5-10 person-days | VM resize, storage expansion, firewall rule, DNS change |
+| **XS (Extra Small)** | Config change only; no design artefacts required; no cross-team impact | < 2 person-days | Parameter change, tag update, minor config tweak |
+| **S (Small)** | Single component; standard pattern; no new technologies; no cross-team dependencies | 2-10 person-days | VM resize, storage expansion, firewall rule, DNS change |
 | **M (Medium)** | Multiple components; known pattern; standard technologies; limited dependencies | 10-30 person-days | New application deployment using approved patterns; database migration |
 | **L (Large)** | Complex architecture; multiple teams; may involve new patterns; significant cost | 30-60 person-days | New platform deployment; multi-tier application; cross-environment solution |
 | **XL (Extra Large)** | Enterprise-scale; new technology introduction; significant compliance impact; multi-month | 60+ person-days | Platform migration; M&A integration; new cloud landing zone; re-architecture |

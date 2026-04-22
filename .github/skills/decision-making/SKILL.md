@@ -40,7 +40,27 @@ description: "Architecture decision records, demand reviews, and option analysis
 
 ### For Demand Reviews
 
-1. Receive the demand (via ServiceNow request, ADO work item, or direct request)
+**Stage 1 — Aha! Triage (Architecture Assessment)**
+
+New and in-progress demands originate in Aha! and are reviewed from two pivot views:
+
+| Team | Aha! View |
+|------|-----------|
+| **Hosted Services** | [Aha! Hosted Services Demand Pivot](https://optum.aha.io/bookmarks/custom_pivots/7631534830970022767) |
+| **Platform Engineering** | [Aha! Platform Engineering Demand Pivot](https://optum.aha.io/bookmarks/custom_pivots/7631536791781662911) |
+
+1. Access the relevant Aha! pivot view for the demand being assessed
+2. Complete the **Architecture Assessment** scoring template — see [Architecture Assessment Template](./references/architecture-assessment-template.md)
+3. Score Business/Operational Benefit (1–5 per dimension, max 20) and Technical & Delivery Complexity (1–5 per dimension, max 20)
+4. Calculate the Benefit ÷ Complexity ratio to inform prioritisation
+5. Assign an indicative T-shirt size (XS/S/M/L/XL) and dependency risk rating
+6. Use the scorecard to recommend: prioritise, monitor, defer, or decline
+
+**Stage 2 — Full Demand Review (Pre-Design Gate)**
+
+Once a demand is approved for progression, complete the full demand review:
+
+1. Receive the confirmed demand (via ServiceNow request, ADO work item, or direct request)
 2. Use the Demand Review Checklist — see [Demand Review Checklist](./references/demand-review-checklist.md)
 3. Assess across all dimensions: feasibility, alignment, risk, cost, complexity
 4. Produce a recommendation: Approve / Approve with conditions / Request more info / Decline
@@ -163,5 +183,6 @@ Use this framework before major deployments or go-live decisions:
 
 ## References
 
+- [Architecture Assessment Template](./references/architecture-assessment-template.md) — Aha! demand triage scoring template (Stage 1)
+- [Demand Review Checklist](./references/demand-review-checklist.md) — Full pre-design demand review (Stage 2)
 - [ADR Template](./references/adr-template.md) — Architecture Decision Record template
-- [Demand Review Checklist](./references/demand-review-checklist.md) — Structured demand review process

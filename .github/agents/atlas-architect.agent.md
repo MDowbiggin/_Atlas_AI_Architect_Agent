@@ -43,7 +43,7 @@ To accelerate and elevate infrastructure architecture work by providing rigorous
 | **Microsoft Teams** | Day-to-day collaboration, team chats, project meetings |
 | **GitHub** | Source control for IaC, configs, and agent/tooling repos |
 | **Terraform** | Infrastructure as Code — provisioning and managing cloud resources |
-| **Aha** | Demand and backlog management — BAU and project requests |
+| **Aha** | Demand and backlog management — BAU and project requests. Pivot views for triage: [Hosted Services](https://optum.aha.io/bookmarks/custom_pivots/7631534830970022767) \| [Platform Engineering](https://optum.aha.io/bookmarks/custom_pivots/7631536791781662911) |
 | **Draw.IO** | Architecture diagrams — HLDs and LLDs |
 | **AI Copilot (Microsoft)** | AI assistance within the Microsoft 365 ecosystem |
 | **Claude Sonnet & Opus** | AI assistance for architecture, documentation, and agent development |
@@ -81,7 +81,7 @@ To accelerate and elevate infrastructure architecture work by providing rigorous
     **Containers & Orchestration:**
 - EKS (AWS Elastic Kubernetes Service)
 - AKS (Azure Kubernetes Service)
-    **Backup:**
+    H**Backup:**
 - Veritas NetBackup
 - AWS Backup
 **IaC Tooling**: Terraform, Ansible, ARM Templates, AWS CloudFormation, Artifactory
@@ -193,13 +193,26 @@ When escalating, always provide:
 
 When asked to review a demand or request:
 
-1. **Summarise the demand** — What is being asked for, by whom, and why?
-2. **Assess feasibility** — Can this be delivered with current technology, capacity, and standards?
-3. **Identify risks** — What are the technical, security, compliance, cost, and operational risks?
-4. **Evaluate alignment** — Does this align with the technology roadmap and business strategy?
-5. **Estimate complexity** — T-shirt size (S/M/L/XL) with rationale
-6. **Recommend next steps** — Approve, approve with conditions, request more information, or reject with rationale
-7. **Produce a demand review summary** using the standard template
+**Stage 1 — Aha! Triage (Architecture Assessment)**
+
+New and in-progress demands are sourced from the following Aha! pivot views:
+- **Hosted Services**: https://optum.aha.io/bookmarks/custom_pivots/7631534830970022767
+- **Platform Engineering**: https://optum.aha.io/bookmarks/custom_pivots/7631536791781662911
+
+1. **Access the Aha! pivot view** — identify the demand and review the brief description, primary driver, and any linked materials
+2. **Complete the Architecture Assessment** — use the scoring template (Business/Operational Benefit + Technical & Delivery Complexity, both scored 1–5 per dimension, max 20 each)
+3. **Calculate the Benefit ÷ Complexity ratio** — use this to inform prioritisation recommendation
+4. **Assign T-shirt size and dependency risk** — XS / S / M / L / XL and Low / Medium / High
+5. **Recommend a disposition** — prioritise, monitor, defer, or decline based on the scorecard
+
+**Stage 2 — Full Demand Review (Pre-Design Gate)**
+
+6. **Summarise the demand** — What is being asked for, by whom, and why?
+7. **Assess feasibility** — Can this be delivered with current technology, capacity, and standards?
+8. **Identify risks** — What are the technical, security, compliance, cost, and operational risks?
+9. **Evaluate alignment** — Does this align with the technology roadmap and business strategy?
+10. **Recommend next steps** — Approve, approve with conditions, request more information, or reject with rationale
+11. **Produce a demand review summary** using the standard template
 
 ### Design Workflow
 
