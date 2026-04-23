@@ -17,18 +17,46 @@ New and in-progress demands are reviewed from the following Aha! pivot views:
 
 ## Template
 
+The following is the **canonical output format** for all Atlas_Architect Architecture Assessments. Every output must follow this structure exactly — section order, heading levels, table columns, and sub-section names are fixed. Do not add, remove, or rename sections without updating this template.
+
 ```markdown
 # Architecture Assessment — [Demand Title]
+
+**Classification:** Internal
+**Version:** 1.0
+**Status:** Draft — Awaiting Architect Sign-off
+**Date:** [DD Month YYYY]
+
+---
+
+## Overall Architecture Scorecard
+
+> Complete this section last — it is the quick-reference summary for stakeholders.
+
+| Measure | Result |
+|---------|--------|
+| **Benefit Score** | /20 |
+| **Complexity Score** | /20 |
+| **Benefit ÷ Complexity Ratio** | |
+| **T-Shirt Size** | XS / S / M / L / XL |
+| **Dependency Risk** | Low / Medium / High |
+
+---
 
 ## Idea Summary
 
 | Field | Detail |
 |-------|--------|
-| **Demand Title** | [Title from Aha!] |
-| **Aha! Link** | [Link to Aha! demand] |
+| **Demand ID** | |
+| **Demand Title** | |
+| **Aha! Link** | |
 | **Brief Description** | [1–2 sentences summarising the idea] |
-| **Primary Driver** | Cost / Resilience / Security / Speed / Compliance |
-| **Reviewer** | [Architect Name] |
+| **Primary Driver** | - [ ] Cost &nbsp; - [ ] Resilience &nbsp; - [ ] Security &nbsp; - [ ] Speed &nbsp; - [ ] Compliance |
+| **Workspace** | |
+| **Created By** | |
+| **Created Date** | |
+| **Reviewer** | |
+| **Review Date** | |
 
 ---
 
@@ -36,17 +64,14 @@ New and in-progress demands are reviewed from the following Aha! pivot views:
 
 > Add up the four scores below (max 20) and record the total in the Overall Architecture Scorecard.
 
-| Dimension | Guiding Question | Score (1–5) |
-|-----------|-----------------|-------------|
-| **Business Impact** | Does this materially change outcomes, revenue, or risk? | |
-| **Operational Efficiency** | Will this reduce toil, incidents, or manual effort? | |
-| **Time Sensitivity** | Is there a deadline, dependency or regulatory driver? | |
-| **Reuse / Strategic Value** | Is this reusable across platforms or teams? | |
+| Dimension | Guiding Question | Score (1–5) | Rationale |
+|-----------|-----------------|:-----------:|-----------|
+| **Business Impact** | Does this materially change outcomes, revenue, or risk? | | |
+| **Operational Efficiency** | Will this reduce toil, incidents, or manual effort? | | |
+| **Time Sensitivity** | Is there a deadline, dependency or regulatory driver? | | |
+| **Reuse / Strategic Value** | Is this reusable across platforms or teams? | | |
 
-**Scoring Anchors:**
-- **1** — Marginal / nice-to-have
-- **3** — Clear improvement for a subset of teams
-- **5** — Strategic or regulatory-level importance
+**Benefit Score: /20**
 
 ---
 
@@ -55,17 +80,14 @@ New and in-progress demands are reviewed from the following Aha! pivot views:
 > This is intentionally architecture-centric, not delivery-manager level.
 > Add up the four scores below (max 20) and record the total in the Overall Architecture Scorecard.
 
-| Dimension | Guiding Question | Score (1–5) |
-|-----------|-----------------|-------------|
-| **Architectural Change** | New patterns, platforms, or core services? | |
-| **Integration Complexity** | Number & criticality of systems touched? | |
-| **Security / Compliance Impact** | New threat models, controls, audits required? | |
-| **Operational Change** | New runbooks, monitoring, on-call impact? | |
+| Dimension | Guiding Question | Score (1–5) | Rationale |
+|-----------|-----------------|:-----------:|-----------|
+| **Architectural Change** | New patterns, platforms, or core services? | | |
+| **Integration Complexity** | Number & criticality of systems touched? | | |
+| **Security / Compliance Impact** | New threat models, controls, audits required? | | |
+| **Operational Change** | New runbooks, monitoring, on-call impact? | | |
 
-**Scoring Anchors:**
-- **1** — Config / extension of existing patterns
-- **3** — New component, known pattern
-- **5** — Net-new platform or material re-architecture
+**Complexity Score: /20**
 
 ---
 
@@ -75,34 +97,36 @@ New and in-progress demands are reviewed from the following Aha! pivot views:
 
 | Size | Typical Characteristics |
 |------|------------------------|
-| **XS** | Config change, no design artefacts |
-| **S** | Minor design, 1–2 services, known patterns |
-| **M** | Multiple components, security involvement |
-| **L** | Cross-domain impact, new patterns |
-| **XL** | Platform-level capability or re-architecture |
+| XS | Config change, no design artefacts |
+| S | Minor design, 1–2 services, known patterns |
+| M | Multiple components, security involvement |
+| L | Cross-domain impact, new patterns |
+| XL | Platform-level capability or re-architecture |
 
 **Indicative Size:** XS / S / M / L / XL
+
+Rationale: [Explain the sizing choice here]
 
 ---
 
 ## Dependency & Engagement Assessment
 
-Tick all that apply.
-
 ### Internal Teams Likely Required
 
-- [ ] Security Architecture
-- [ ] Networks
-- [ ] Application Teams
-- [ ] Product / Commercial
-- [ ] Procurement
+- [ ] **Security Architecture**
+- [ ] **Networks**
+- [ ] **Application Teams**
+- [ ] **Product / Commercial**
+- [ ] **Procurement**
 
 ### External or Non-Team Dependencies
 
-- [ ] Vendor / SaaS provider
-- [ ] Regulator / External Audit
+- [ ] **Vendor / SaaS provider**
+- [ ] **Regulator / External Audit**
 
 **Dependency Risk:** Low / Medium / High
+
+> [Expand on the dependency risk and primary driver of uncertainty here]
 
 ---
 
@@ -128,14 +152,50 @@ Tick all that apply.
 |---------|--------|
 | **Benefit Score** | /20 |
 | **Complexity Score** | /20 |
-| **Benefit ÷ Complexity Ratio** | e.g. 1.6 |
+| **Benefit ÷ Complexity Ratio** | |
 | **T-Shirt Size** | XS / S / M / L / XL |
-| **Dependency Risk** | Low / Med / High |
+| **Dependency Risk** | Low / Medium / High |
+
+---
+
+## Scoring Interpretation
+
+| Benefit ÷ Complexity Ratio | Interpretation |
+|---------------------------|----------------|
+| > 1.5 | High value, relatively low complexity — prioritise |
+| **1.0 – 1.5** | **Balanced — assess against current backlog capacity** |
+| 0.5 – 1.0 | High complexity relative to benefit — challenge scope or defer |
+| < 0.5 | Low value, high complexity — decline or significantly descope |
+
+**Ratio: [x.x] — [One-line interpretation and recommendation statement]**
+
+---
+
+## Recommendation
+
+### ✅ / ⚠️ / ❌ Recommended Disposition: **[Prioritise / Monitor / Defer / Decline] — [Sub-qualifier e.g. Approve with Conditions]**
+
+[Opening rationale paragraph linking the scores, strategic alignment, and key drivers]
+
+**Conditions for progression:** *(omit section if no conditions apply)*
+
+1. **[Condition title]** — [Detail]
+2. **[Condition title]** — [Detail]
+
+### Suggested Next Steps
+
+| Action | Owner | When |
+|--------|-------|------|
+| | | |
+
+---
+
+*Document generated by Atlas_Architect | [Demand ID] | Version [x.x] | Status: [Draft/Approved]*
 ```
 
 ---
 
-## Scoring Interpretation Guide
+## Scoring Interpretation Guide (Reference)
 
 | Benefit ÷ Complexity Ratio | Interpretation |
 |---------------------------|----------------|
