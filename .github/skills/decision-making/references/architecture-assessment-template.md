@@ -35,9 +35,11 @@ The following is the **canonical output format** for all Atlas_Architect Archite
 
 | Measure | Result |
 |---------|--------|
-| **Benefit Score** | /20 |
-| **Complexity Score** | /20 |
-| **Benefit ÷ Complexity Ratio** | |
+| **Business / Operational Value Score** | /5 |
+| **Time Criticality Score** | /5 |
+| **Risk Reduction Score** | /5 |
+| **Job Size Score** | /5 |
+| **WSJF Score** | (BV + TC + RR) ÷ JS |
 | **T-Shirt Size** | XS / S / M / L / XL |
 | **Dependency Risk** | Low / Medium / High |
 
@@ -60,50 +62,103 @@ The following is the **canonical output format** for all Atlas_Architect Archite
 
 ---
 
-## Business / Operational Benefit (Score 1–5)
+## Business / Operational Value (Score 1–5)
 
-> Add up the four scores below (max 20) and record the total in the Overall Architecture Scorecard.
+> Score each dimension 1–5. The Business / Operational Value Score is the **average or consensus** of the three scores below.
 
 | Dimension | Guiding Question | Score (1–5) | Rationale |
 |-----------|-----------------|:-----------:|-----------|
-| **Business Impact** | Does this materially change outcomes, revenue, or risk? | | |
+| **Business Impact** | Does this materially change outcomes, revenue, or risk exposure? | | |
 | **Operational Efficiency** | Will this reduce toil, incidents, or manual effort? | | |
-| **Time Sensitivity** | Is there a deadline, dependency or regulatory driver? | | |
-| **Reuse / Strategic Value** | Is this reusable across platforms or teams? | | |
+| **Reuse / Strategic Value** | Is this reusable across platforms, products, or teams? | | |
 
-**Benefit Score: /20**
+**Business / Operational Value Score: /5**
+
+<details>
+<summary>Scoring Anchor</summary>
+
+| Score | Meaning |
+|-------|---------|
+| **1** | Marginal / nice-to-have; limited measurable benefit |
+| **2** | Minor improvement for a single team or workflow |
+| **3** | Clear improvement for multiple teams or a key business process |
+| **4** | Significant impact on revenue, cost, or operational resilience |
+| **5** | Strategic or regulatory-level importance; failure to deliver creates material business risk |
+
+</details>
 
 ---
 
-## Technical & Delivery Complexity (Score 1–5)
+## Time Criticality (Score 1–5)
 
-> This is intentionally architecture-centric, not delivery-manager level.
-> Add up the four scores below (max 20) and record the total in the Overall Architecture Scorecard.
+> How rapidly does this problem need to be solved or delivered? Select the single most appropriate score.
+
+| Score | Urgency | Rationale |
+|-------|---------|-----------|
+| **1** | No hard deadline — can be scheduled at convenience (12+ months) | |
+| **2** | Desired within the next year (6–12 months) | |
+| **3** | Needed within the next 3–6 months | |
+| **4** | Urgent — required within the next quarter (1–3 months); delay creates material risk | |
+| **5** | Critical — must be delivered within 6 weeks; regulatory, contractual, or security imperative | |
+
+**Time Criticality Score: /5**
+
+---
+
+## Risk Reduction / Opportunity Enablement (Score 1–5)
+
+> Score each dimension 1–5. The Risk Reduction Score is the **average or consensus** of the three scores below.
 
 | Dimension | Guiding Question | Score (1–5) | Rationale |
 |-----------|-----------------|:-----------:|-----------|
-| **Architectural Change** | New patterns, platforms, or core services? | | |
-| **Integration Complexity** | Number & criticality of systems touched? | | |
-| **Security / Compliance Impact** | New threat models, controls, audits required? | | |
-| **Operational Change** | New runbooks, monitoring, on-call impact? | | |
+| **Security / Compliance Risk** | Does this address a known vulnerability, audit finding, or regulatory gap? | | |
+| **Operational Risk** | Does this reduce incident likelihood, blast radius, or recovery time? | | |
+| **Opportunity Enablement** | Does this unlock new capabilities, integrations, or market access? | | |
 
-**Complexity Score: /20**
+**Risk Reduction Score: /5**
+
+<details>
+<summary>Scoring Anchor</summary>
+
+| Score | Meaning |
+|-------|---------|
+| **1** | No meaningful risk reduction; no new opportunities unlocked |
+| **2** | Addresses a low-severity risk or enables a minor future enhancement |
+| **3** | Mitigates a moderate, known risk or enables a valuable capability |
+| **4** | Significantly reduces a high-likelihood or high-impact risk |
+| **5** | Eliminates a critical / regulatory risk or is a prerequisite for a strategic initiative |
+
+</details>
 
 ---
 
-## Effort T-Shirt Sizing (Architecture View)
+## Job Size (Score 1–5)
 
-> Not a commitment — a directional size to guide prioritisation.
+> Estimate the overall effort required to deliver this item. Consider architectural change, integration complexity, security involvement, and operational impact. The Job Size Score is the **average or consensus** of the four scores below.
 
-| Size | Typical Characteristics |
-|------|------------------------|
-| XS | Config change, no design artefacts |
-| S | Minor design, 1–2 services, known patterns |
-| M | Multiple components, security involvement |
-| L | Cross-domain impact, new patterns |
-| XL | Platform-level capability or re-architecture |
+| Dimension | Guiding Question | Score (1–5) | Rationale |
+|-----------|-----------------|:-----------:|-----------|
+| **Architectural Change** | New patterns, platforms, or core services required? | | |
+| **Integration Complexity** | Number and criticality of systems touched? | | |
+| **Security / Compliance Effort** | New threat models, controls, or audits required? | | |
+| **Operational Change** | New runbooks, monitoring, or on-call impact? | | |
 
-**Indicative Size:** XS / S / M / L / XL
+**Job Size Score: /5**
+
+<details>
+<summary>Scoring Anchor (T-Shirt Sizing)</summary>
+
+| Score | T-Shirt | Typical Characteristics |
+|-------|---------|------------------------|
+| **1** | XS | Config change or extension of existing patterns |
+| **2** | S | Minor design work, 1–2 services, known patterns |
+| **3** | M | Multiple components, some security involvement |
+| **4** | L | Cross-domain impact, new patterns required |
+| **5** | XL | Platform-level capability or material re-architecture |
+
+</details>
+
+**Indicative T-Shirt Size:** XS / S / M / L / XL
 
 Rationale: [Explain the sizing choice here]
 
@@ -150,24 +205,29 @@ Rationale: [Explain the sizing choice here]
 
 | Measure | Result |
 |---------|--------|
-| **Benefit Score** | /20 |
-| **Complexity Score** | /20 |
-| **Benefit ÷ Complexity Ratio** | |
+| **Business / Operational Value Score** | /5 |
+| **Time Criticality Score** | /5 |
+| **Risk Reduction Score** | /5 |
+| **Job Size Score** | /5 |
+| **WSJF Score** | (BV + TC + RR) ÷ JS |
 | **T-Shirt Size** | XS / S / M / L / XL |
 | **Dependency Risk** | Low / Medium / High |
 
 ---
 
-## Scoring Interpretation
+## WSJF Scoring & Interpretation
 
-| Benefit ÷ Complexity Ratio | Interpretation |
-|---------------------------|----------------|
-| > 1.5 | High value, relatively low complexity — prioritise |
-| **1.0 – 1.5** | **Balanced — assess against current backlog capacity** |
-| 0.5 – 1.0 | High complexity relative to benefit — challenge scope or defer |
-| < 0.5 | Low value, high complexity — decline or significantly descope |
+> **WSJF = (Business Value + Time Criticality + Risk Reduction) ÷ Job Size**
+> Higher scores indicate higher relative priority. Use alongside strategic context and dependency risk.
 
-**Ratio: [x.x] — [One-line interpretation and recommendation statement]**
+| WSJF Score | Interpretation |
+|------------|----------------|
+| > 3.0 | High value relative to size — strong case to prioritise |
+| **2.0 – 3.0** | **Balanced — assess against current backlog capacity** |
+| 1.0 – 2.0 | Moderate priority — consider deferral or scope reduction |
+| < 1.0 | Low value or very high complexity — challenge scope, defer, or decline |
+
+**WSJF Score: [x.x] — [One-line interpretation and recommendation statement]**
 
 ---
 
@@ -195,14 +255,16 @@ Rationale: [Explain the sizing choice here]
 
 ---
 
-## Scoring Interpretation Guide (Reference)
+## WSJF Scoring Interpretation Guide (Reference)
 
-| Benefit ÷ Complexity Ratio | Interpretation |
-|---------------------------|----------------|
-| **> 1.5** | High value, relatively low complexity — prioritise |
-| **1.0 – 1.5** | Balanced — assess against current backlog capacity |
-| **0.5 – 1.0** | High complexity relative to benefit — challenge scope or defer |
-| **< 0.5** | Low value, high complexity — decline or significantly descope |
+> **WSJF = (Business Value + Time Criticality + Risk Reduction) ÷ Job Size**
+
+| WSJF Score | Interpretation |
+|------------|----------------|
+| **> 3.0** | High value relative to size — strong case to prioritise |
+| **2.0 – 3.0** | Balanced — assess against current backlog capacity |
+| **1.0 – 2.0** | Moderate priority — consider deferral or scope reduction |
+| **< 1.0** | Low value or very high complexity — challenge scope, defer, or decline |
 
 ## Relationship to Full Demand Review
 
