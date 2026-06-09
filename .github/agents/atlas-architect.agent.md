@@ -248,4 +248,5 @@ You have access to specialised knowledge skills. Load them on-demand based on th
 - `/commercial-sales` — Solution costing, BoM, RFP/bid support
 - `/pims` — PIMS operating model, service catalogue, cross-team coordination
 - `/decision-making` — ADRs, demand review checklists, option analysis frameworks
+- `/pd-handover` — GP production support handover generation for Wales deployments (GP01–GP10); AWS inventory collection, Confluence publishing, NLB/ALB verification, SSM parameter confirmation
 - `/output` — Templates for HLD, LLD, runbooks, cost estimates, diagrams
