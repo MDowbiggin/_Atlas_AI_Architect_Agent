@@ -7,6 +7,7 @@ description: "Output templates and formatting guidelines for architecture artefa
 
 ## When to Use
 
+- Documenting requirements before a demand review, project, research, or design (first gate)
 - Producing a High-Level Design (HLD) document
 - Producing a Low-Level Design (LLD) document
 - Creating operational runbooks for PIMS/CloudOps
@@ -21,6 +22,7 @@ description: "Output templates and formatting guidelines for architecture artefa
 
 | Template | Use Case | Reference |
 |----------|----------|-----------|
+| **Requirements Specification** | Documented requirements record — mandatory first gate before research, demand review, or design | See `/decision-making` skill — [Requirements Specification Template](../decision-making/references/requirements-specification-template.md) |
 | **HLD** | High-Level Design for new or modified solutions | [HLD Template](./references/hld-template.md) |
 | **LLD** | Low-Level Design with configuration-level detail | [LLD Template](./references/lld-template.md) |
 | **Runbook** | Operational procedures for PIMS/CloudOps | [Runbook Template](./references/runbook-template.md) |
@@ -37,6 +39,7 @@ description: "Output templates and formatting guidelines for architecture artefa
 
 | Task | Primary Output | Supporting Outputs |
 |------|---------------|-------------------|
+| Requirements capture (any new ask) | Requirements Specification | — (precedes all other outputs) |
 | New solution design | HLD | Diagrams, Cost Estimate, ADR(s) |
 | Detailed implementation spec | LLD | Diagrams, Runbook |
 | Operational handover | Runbook | CMDB entries, monitoring dashboards |

@@ -4,6 +4,8 @@
 
 This is the **lightweight scoring template** used to triage new and in-progress Aha! demands. It is completed by the assigned Infrastructure Solutions Architect during initial demand review and before the full Demand Review Checklist is produced.
 
+> **Prerequisite — Requirements Definition Gate (guardrails Section 7):** Do not score a demand on an undocumented brief. A Requirements Specification must be started first — see [Requirements Specification Template](./requirements-specification-template.md). Where requirements are incomplete, capture what is known, flag gaps and assumptions, and score on a provisional, assumption-dependent basis.
+
 ### Aha! Demand Sources
 
 New and in-progress demands are reviewed from the following Aha! pivot views:
@@ -59,6 +61,25 @@ The following is the **canonical output format** for all Atlas_Architect Archite
 | **Created Date** | |
 | **Reviewer** | |
 | **Review Date** | |
+
+---
+
+## Requirements Readiness
+
+> Confirm requirements are documented before scoring (guardrails Section 7). Capture them in the [Requirements Specification](./requirements-specification-template.md).
+
+| Requirement Area | Status |
+|------------------|:------:|
+| Functional | ✅ / ⚠️ / ❌ |
+| Non-functional (availability, performance, scalability, DR — RTO/RPO) | ✅ / ⚠️ / ❌ |
+| Security & compliance (HIPAA/NIST/CIS/ISO) + data classification | ✅ / ⚠️ / ❌ |
+| Constraints & assumptions | ✅ / ⚠️ / ❌ |
+| In-scope / out-of-scope | ✅ / ⚠️ / ❌ |
+| Success / acceptance criteria | ✅ / ⚠️ / ❌ |
+| Stakeholders, requestor & driver | ✅ / ⚠️ / ❌ |
+| Cost / budget envelope & timeline | ✅ / ⚠️ / ❌ |
+
+**Requirements status:** ✅ Confirmed / ⚠️ Provisional — scored against documented assumptions / ❌ Insufficient — confirmation required
 
 ---
 

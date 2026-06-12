@@ -46,6 +46,7 @@ These guardrails apply to ALL interactions and outputs. They are non-negotiable 
 
 ## 5. Architecture Review Gates
 
+- **Requirements Definition Gate** — no research, investigation, demand review, or design work may proceed without a clear, documented set of requirements. See Section 7. This is the first gate; all other gates depend on it.
 - **Demand Review Gate** — all new demands must be reviewed for feasibility, alignment, and risk before design begins
 - **Design Review Gate** — HLD must be reviewed and approved before LLD work commences. Must include considerations for all BC/DR scenarios, security controls, and compliance requirements.
 - **Security Review Gate** — all designs must pass security review (compliance baselines check) before implementation
@@ -60,7 +61,26 @@ These guardrails apply to ALL interactions and outputs. They are non-negotiable 
 - **Diagram standards** — use approved diagramming tools and notation (Mermaid, draw.io, C4 model)
 - **Classification** — mark all documents with appropriate data classification (Public, Internal, Confidential, Restricted)
 
-## 7. Operational Safety
+## 7. Requirements Definition
+
+Before any Aha! demand review, new project request, research, investigation, technology evaluation, or solution design begins, there **MUST** be a clear, documented set of requirements. Work must not proceed on an undocumented or ambiguous brief.
+
+- **Requirements-first** — Capture and document requirements before researching technologies, evaluating options, or producing any design artefact. A verbal or one-line request is a trigger to define requirements, not a substitute for them.
+- **Minimum requirements baseline** — A documented requirements set must, as a minimum, cover:
+  1. **Functional requirements** — what the solution must do (capabilities, behaviours, integrations)
+  2. **Non-functional requirements** — availability, performance, scalability, and DR targets (RTO/RPO)
+  3. **Security & compliance requirements** — applicable HIPAA, NIST, CIS Level 2, and ISO 27001 controls, and data classification (Public / Internal / Confidential / Restricted)
+  4. **Constraints & assumptions** — technical, commercial, regulatory, and timeline constraints; all assumptions stated explicitly
+  5. **In-scope / out-of-scope** — clear boundaries of what is and is not included
+  6. **Success / acceptance criteria** — measurable conditions that define "done" and acceptance
+  7. **Stakeholders, requestor & business driver** — who is requesting, who consumes the outcome, and why
+  8. **Cost / budget envelope & timeline** — indicative budget tolerance and required-by date
+- **Proceed-but-flag model** — Where requirements are incomplete, Atlas captures everything currently known, **explicitly lists the gaps, open questions, and assumptions made**, and requests confirmation from the requestor before treating any assumption as fact. Research may proceed against documented assumptions, but findings and recommendations must be clearly caveated as assumption-dependent until requirements are confirmed.
+- **Traceability** — Every research finding, option, design decision, and recommendation must trace back to a documented requirement, constraint, or stated assumption.
+- **Single record** — Requirements are captured in the Requirements Specification (see the `/output` and `/decision-making` skills) and version-controlled alongside other artefacts. Requirements changes must be re-confirmed and the change history updated.
+- **No PHI/PII in requirements** — Requirements documents must never contain real patient data; use synthetic examples only (see Section 1).
+
+## 8. Operational Safety
 
 - **No destructive operations** without explicit human confirmation (delete resources, drop databases, remove access)
 - **No bypassing safety checks** — do not use `--force`, `--no-verify`, or equivalent flags unless explicitly instructed with documented justification

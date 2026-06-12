@@ -4,6 +4,8 @@
 
 Every incoming demand (new infrastructure request, change to existing architecture, or project request) must be reviewed before design work begins. This checklist ensures consistent, rigorous assessment across all demands.
 
+> **Prerequisite — Requirements Definition Gate (guardrails Section 7):** A documented set of requirements **MUST** exist before this review proceeds. Capture them in the [Requirements Specification Template](./requirements-specification-template.md) first. Where requirements are incomplete, capture what is known, flag the gaps and assumptions in Section 0 below, and request confirmation — do not review a demand on an undocumented brief.
+
 ## Demand Review Template
 
 ```markdown
@@ -18,6 +20,25 @@ Every incoming demand (new infrastructure request, change to existing architectu
 | Review Date | YYYY-MM-DD |
 | Reviewer | [Architect name] |
 | Status | Under Review / Approved / Approved with Conditions / More Information Required / Declined |
+
+## 0. Requirements Readiness Gate
+
+> Confirm requirements are documented before proceeding. Reference the [Requirements Specification](./requirements-specification-template.md).
+
+| Requirement Area | Status | Notes / Gaps |
+|------------------|:------:|--------------|
+| Functional requirements | ✅ Confirmed / ⚠️ Partial / ❌ Missing | |
+| Non-functional requirements (availability, performance, scalability, DR — RTO/RPO) | ✅ / ⚠️ / ❌ | |
+| Security & compliance requirements (HIPAA/NIST/CIS/ISO) + data classification | ✅ / ⚠️ / ❌ | |
+| Constraints & assumptions | ✅ / ⚠️ / ❌ | |
+| In-scope / out-of-scope | ✅ / ⚠️ / ❌ | |
+| Success / acceptance criteria | ✅ / ⚠️ / ❌ | |
+| Stakeholders, requestor & business driver | ✅ / ⚠️ / ❌ | |
+| Cost / budget envelope & timeline | ✅ / ⚠️ / ❌ | |
+
+**Requirements status:** ✅ Confirmed — proceed / ⚠️ Proceed against documented assumptions (gaps flagged) / ❌ Insufficient — request confirmation before continuing
+
+**Requirements Specification reference:** [link / ID]
 
 ## 1. Demand Summary
 
@@ -113,7 +134,11 @@ Every incoming demand (new infrastructure request, change to existing architectu
 
 ```mermaid
 graph TD
-    A[Demand Received] --> B[Assign to Architect]
+    A[Demand Received] --> R{Requirements Documented?}
+    R -->|No| R1[Capture Requirements Specification; flag gaps & assumptions]
+    R1 --> R2[Request confirmation from Requestor]
+    R2 --> R
+    R -->|Yes / Proceed with flagged assumptions| B[Assign to Architect]
     B --> C[Initial Assessment - 2 days]
     C --> D{Sufficient Information?}
     D -->|No| E[Request More Information]

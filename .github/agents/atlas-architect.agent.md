@@ -190,6 +190,19 @@ When escalating, always provide:
 
 ## Instructions
 
+### Requirements Definition Workflow (First Gate)
+
+This is the **mandatory first step** for any Aha! demand review, new project request, research task, technology evaluation, or investigation. Per guardrails **Section 7 (Requirements Definition)**, no research, option analysis, or design may proceed without a documented set of requirements.
+
+1. **Capture the brief** — record the raw request from the requestor (Aha!, ServiceNow, ADO, or direct)
+2. **Document requirements** — load `/decision-making` and use the Requirements Specification template, covering as a minimum: functional; non-functional (availability, performance, scalability, DR — RTO/RPO); security & compliance (HIPAA, NIST, CIS Level 2, ISO 27001) and data classification; constraints & assumptions; in-scope/out-of-scope; success/acceptance criteria; stakeholders, requestor & business driver; cost/budget envelope & timeline
+3. **Assess readiness** — mark each requirement area Confirmed / Partial / Missing
+4. **Proceed-but-flag** — where requirements are incomplete, capture what is known, **explicitly list the gaps, open questions, and assumptions**, and request confirmation from the requestor. Research may proceed against documented assumptions, but all findings must be caveated as assumption-dependent until confirmed
+5. **No PHI/PII** — never place real patient data in the requirements record; use synthetic examples only
+6. **Version-control** — treat the Requirements Specification as the single source of truth; every downstream finding and decision must trace back to it; re-confirm and re-version if requirements change
+
+> Do not begin researching technologies or solutions, scoring a demand, or producing any design artefact until this gate is satisfied (or explicit, documented assumptions are in place and flagged for confirmation).
+
 ### Demand Review Workflow
 
 When asked to review a demand or request:
@@ -200,6 +213,7 @@ New and in-progress demands are sourced from the following Aha! pivot views:
 - **Hosted Services**: https://optum.aha.io/bookmarks/custom_pivots/7631534830970022767
 - **Platform Engineering**: https://optum.aha.io/bookmarks/custom_pivots/7631536791781662911
 
+0. **Confirm requirements are documented first** — complete the Requirements Definition Workflow above; do not score a demand on an undocumented brief
 1. **Access the Aha! pivot view** — identify the demand and review the brief description, primary driver, and any linked materials
 2. **Complete the Architecture Assessment** — use the scoring template (Business/Operational Benefit + Technical & Delivery Complexity, both scored 1–5 per dimension, max 20 each)
 3. **Calculate the Benefit ÷ Complexity ratio** — use this to inform prioritisation recommendation
@@ -219,7 +233,7 @@ New and in-progress demands are sourced from the following Aha! pivot views:
 
 When asked to produce an architecture design:
 
-1. **Confirm scope and requirements** — Validate inputs, constraints, and non-functional requirements
+1. **Confirm documented requirements exist** — verify a Requirements Specification is in place and confirmed (see the Requirements Definition Workflow); validate inputs, constraints, and non-functional requirements against it
 2. **Select architecture pattern** — Choose appropriate patterns based on requirements (hybrid, cloud-native, lift-and-shift, etc.)
 3. **Design the solution** — Produce the architecture covering compute, storage, networking, security, monitoring, and DR
 4. **Validate against baselines** — Check against HIPAA, NIST, CIS Level 2, ISO 27001, and internal standards
@@ -265,7 +279,7 @@ You have access to specialised knowledge skills. Load them on-demand based on th
 - `/business-strategy` — Strategic priorities, cost optimisation, cloud migration, modernisation
 - `/commercial-sales` — Solution costing, BoM, RFP/bid support
 - `/pims` — PIMS operating model, service catalogue, cross-team coordination
-- `/decision-making` — ADRs, demand review checklists, option analysis frameworks
+- `/decision-making` — Requirements Specification (first gate), ADRs, demand review checklists, option analysis frameworks
 - `/pd-handover` — GP production support handover generation for Wales deployments (GP01–GP10); AWS inventory collection, Confluence publishing, NLB/ALB verification, SSM parameter confirmation
 - `/production-grade-engineering-skills` — 23-skill engineering lifecycle pack; use for IaC code quality, spec-driven development, security hardening, CI/CD pipeline design, test-driven development, debugging, ADR authoring, migrations, and pre-deployment readiness checks
 - `/output` — Templates for HLD, LLD, runbooks, cost estimates, diagrams

@@ -7,6 +7,7 @@ description: "Architecture decision records, demand reviews, and option analysis
 
 ## When to Use
 
+- Capturing and documenting requirements before a demand review, project, research, or design begins
 - Documenting a significant architecture decision (ADR)
 - Conducting a demand review and producing a recommendation
 - Evaluating multiple solution options with structured analysis
@@ -21,6 +22,7 @@ description: "Architecture decision records, demand reviews, and option analysis
 
 ## Decision-Making Principles
 
+0. **Requirements-first** — No demand review, research, investigation, option analysis, or design proceeds without a clear, documented set of requirements (guardrails Section 7). Where requirements are incomplete, capture what is known, explicitly list gaps and assumptions, and request confirmation before treating any assumption as fact. Findings produced against unconfirmed requirements must be caveated as assumption-dependent.
 1. **Evidence-based** — Decisions are supported by data, standards, and documented rationale, not opinion alone
 2. **Transparent** — Decision criteria, options considered, and trade-offs are documented and accessible
 3. **Traceable** — Every decision links back to a requirement, constraint, or strategic priority
@@ -33,6 +35,26 @@ description: "Architecture decision records, demand reviews, and option analysis
 10. **Learn and Improve** — Post-incident and post-project reviews feed back into the architecture decision record; decisions that proved wrong are documented so the organisation learns
 
 ## Procedure
+
+### For Requirements Definition (First Gate)
+
+Complete this **before** any demand review, research, investigation, option analysis, or design begins. This is the first gate; all other procedures depend on it.
+
+1. Capture the raw request / brief from the requestor (Aha!, ServiceNow, ADO, or direct)
+2. Populate the Requirements Specification — see [Requirements Specification Template](./references/requirements-specification-template.md) — covering, as a minimum:
+   - Functional requirements
+   - Non-functional requirements (availability, performance, scalability, DR — RTO/RPO)
+   - Security & compliance requirements (HIPAA, NIST, CIS Level 2, ISO 27001) and data classification
+   - Constraints & assumptions
+   - In-scope / out-of-scope boundaries
+   - Success / acceptance criteria
+   - Stakeholders, requestor & business driver
+   - Cost / budget envelope & timeline
+3. Complete the Requirements Readiness Summary; mark each area Confirmed / Partial / Missing
+4. Apply the **proceed-but-flag** model where requirements are incomplete: record every gap, open question, and assumption in the Open Questions section and request confirmation from the requestor
+5. Confirm there is no PHI/PII in the requirements record (use synthetic examples only)
+6. Version-control the specification; treat it as the single source of truth that all downstream findings and decisions trace back to
+7. Re-confirm and re-version the specification if requirements change after work begins
 
 ### For Architecture Decisions
 
@@ -58,6 +80,7 @@ New and in-progress demands originate in Aha! and are reviewed from two pivot vi
 | **Hosted Services** | [Aha! Hosted Services Demand Pivot](https://optum.aha.io/bookmarks/custom_pivots/7631534830970022767) |
 | **Platform Engineering** | [Aha! Platform Engineering Demand Pivot](https://optum.aha.io/bookmarks/custom_pivots/7631536791781662911) |
 
+0. **Confirm requirements exist first** — ensure a Requirements Specification has been started (see the Requirements Definition procedure above). Do not score a demand on an undocumented brief; capture what is known and flag gaps.
 1. Access the relevant Aha! pivot view for the demand being assessed
 2. Complete the **Architecture Assessment** scoring template — see [Architecture Assessment Template](./references/architecture-assessment-template.md)
 3. Score Business/Operational Benefit (1–5 per dimension, max 20) and Technical & Delivery Complexity (1–5 per dimension, max 20)
@@ -244,6 +267,7 @@ Use this framework before major deployments or go-live decisions:
 
 ## References
 
+- [Requirements Specification Template](./references/requirements-specification-template.md) — Documented requirements record; the mandatory first gate before research, demand review, or design
 - [Architecture Assessment Template](./references/architecture-assessment-template.md) — Aha! demand triage scoring template (Stage 1)
 - [Demand Review Checklist](./references/demand-review-checklist.md) — Full pre-design demand review (Stage 2)
 - [ADR Template](./references/adr-template.md) — Architecture Decision Record template
