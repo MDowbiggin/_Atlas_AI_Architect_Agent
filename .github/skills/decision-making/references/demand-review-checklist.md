@@ -49,6 +49,8 @@ Every incoming demand (new infrastructure request, change to existing architectu
 | **Who** | [Consuming team / end users] |
 | **When** | [Required by date] |
 | **Where** | [Azure / AWS / On-prem / Hybrid] |
+| **Idea Category** | Security / Service Improvements / Cost Optimisation / Commercial Delivery / BAU |
+| **Engineering Team** | PLATENG Platform Engineering — Snowden / El Capitan / Everest / Blanc / Operations / FinOps |
 
 ## 2. Feasibility Assessment
 

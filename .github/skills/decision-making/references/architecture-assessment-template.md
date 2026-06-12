@@ -55,7 +55,9 @@ The following is the **canonical output format** for all Atlas_Architect Archite
 | **Demand Title** | |
 | **Aha! Link** | |
 | **Brief Description** | [1–2 sentences summarising the idea] |
+| **Idea Category** | - [ ] Security &nbsp; - [ ] Service Improvements &nbsp; - [ ] Cost Optimisation &nbsp; - [ ] Commercial Delivery &nbsp; - [ ] BAU |
 | **Primary Driver** | - [ ] Cost &nbsp; - [ ] Resilience &nbsp; - [ ] Security &nbsp; - [ ] Speed &nbsp; - [ ] Compliance |
+| **Engineering Team** | - [ ] PLATENG Platform Engineering Snowden &nbsp; - [ ] PLATENG Platform Engineering El Capitan &nbsp; - [ ] PLATENG Platform Engineering Everest &nbsp; - [ ] PLATENG Platform Engineering Blanc &nbsp; - [ ] PLATENG Platform Engineering Operations &nbsp; - [ ] PLATENG Platform Engineering FinOps |
 | **Workspace** | |
 | **Created By** | |
 | **Created Date** | |

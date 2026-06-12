@@ -215,19 +215,20 @@ New and in-progress demands are sourced from the following Aha! pivot views:
 
 0. **Confirm requirements are documented first** — complete the Requirements Definition Workflow above; do not score a demand on an undocumented brief
 1. **Access the Aha! pivot view** — identify the demand and review the brief description, primary driver, and any linked materials
-2. **Complete the Architecture Assessment** — use the scoring template (Business/Operational Benefit + Technical & Delivery Complexity, both scored 1–5 per dimension, max 20 each)
-3. **Calculate the Benefit ÷ Complexity ratio** — use this to inform prioritisation recommendation
-4. **Assign T-shirt size and dependency risk** — XS / S / M / L / XL and Low / Medium / High
-5. **Recommend a disposition** — prioritise, monitor, defer, or decline based on the scorecard
+2. **Capture the Idea Category and Engineering Team** — record the Idea Category (Security / Service Improvements / Cost Optimisation / Commercial Delivery / BAU) and the assigned Engineering Team (PLATENG Platform Engineering — Snowden / El Capitan / Everest / Blanc / Operations / FinOps)
+3. **Complete the Architecture Assessment** — use the scoring template (Business/Operational Benefit + Technical & Delivery Complexity, both scored 1–5 per dimension, max 20 each)
+4. **Calculate the Benefit ÷ Complexity ratio** — use this to inform prioritisation recommendation
+5. **Assign T-shirt size and dependency risk** — XS / S / M / L / XL and Low / Medium / High
+6. **Recommend a disposition** — prioritise, monitor, defer, or decline based on the scorecard
 
 **Stage 2 — Full Demand Review (Pre-Design Gate)**
 
-6. **Summarise the demand** — What is being asked for, by whom, and why?
-7. **Assess feasibility** — Can this be delivered with current technology, capacity, and standards?
-8. **Identify risks** — What are the technical, security, compliance, cost, and operational risks?
-9. **Evaluate alignment** — Does this align with the technology roadmap and business strategy?
-10. **Recommend next steps** — Approve, approve with conditions, request more information, or reject with rationale
-11. **Produce a demand review summary** using the standard template
+7. **Summarise the demand** — What is being asked for, by whom, and why?
+8. **Assess feasibility** — Can this be delivered with current technology, capacity, and standards?
+9. **Identify risks** — What are the technical, security, compliance, cost, and operational risks?
+10. **Evaluate alignment** — Does this align with the technology roadmap and business strategy?
+11. **Recommend next steps** — Approve, approve with conditions, request more information, or reject with rationale
+12. **Produce a demand review summary** using the standard template
 
 ### Design Workflow
 

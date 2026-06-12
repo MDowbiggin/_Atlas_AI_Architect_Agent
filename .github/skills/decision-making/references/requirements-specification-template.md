@@ -41,6 +41,8 @@ The following is the **canonical output format** for all Atlas_Architect Require
 | Demand / Request ID | [Aha! / ServiceNow / ADO reference] |
 | Requestor | [Name and team] |
 | Business Sponsor | [Name and team] |
+| Idea Category | Security / Service Improvements / Cost Optimisation / Commercial Delivery / BAU |
+| Engineering Team | PLATENG Platform Engineering — Snowden / El Capitan / Everest / Blanc / Operations / FinOps |
 | Date Raised | YYYY-MM-DD |
 | Required-By Date | YYYY-MM-DD |
 | Reviewer | [Architect name] |
