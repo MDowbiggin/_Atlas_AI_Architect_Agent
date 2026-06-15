@@ -102,6 +102,7 @@ When a demand could be met by building in-house or purchasing a commercial solut
 - [BoM Templates](./references/bom-templates.md) — Bill of Materials structure for Azure, AWS, and on-premises solutions
 - [RFP & Bid Guidance](./references/rfp-bid-guidance.md) — How to structure RFP responses and commercial bids
 - [Costing Models](./references/costing-models.md) — TCO, ROI, OpEx vs CapEx analysis; EMIS/Optum cost thresholds
+- [Software & Licence Costs](./references/software-licence-costs.md) — Standard EMIS/Optum software licence pricing (Windows Server, SQL Server, VMware VCF, RHEL, NetBackup, REDIS, and tooling); use in BoMs and TCO analyses
 - [Build vs. Buy](./references/build-vs-buy.md) — Framework for evaluating build, buy, and SaaS options
 - [Vendor Management](./references/vendor-management.md) — Key vendor relationships, enterprise agreements, licence governance
 - [NHS Procurement](./references/nhs-procurement.md) — G-Cloud, Digital Outcomes & Specialists, CCS frameworks for NHS bids
