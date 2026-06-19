@@ -80,7 +80,7 @@
 
 | Tool | URL | Purpose |
 |------|-----|---------|
-| **Azure Portal** | https://portal.azure.com | Azure resource management; use SSO with UHG/Optum credentials |
+| **Azure Portal** | https://portal.azure.com | Azure resource management; use SSO with EMIS Group (Microsoft) credentials |
 | **AWS Console** | https://console.aws.amazon.com | AWS resource management; assume role via Identity Center |
 | **Dynatrace** | https://zoh82166.apps.dynatrace.com/ui/apps/dynatrace.dashboards/dashboards | Observability dashboards, service topology, APM |
 | **Dynatrace — Logs** | https://zoh82166.apps.dynatrace.com/ui/apps/dynatrace.logs/ | Centralised log management and search |

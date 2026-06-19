@@ -62,6 +62,28 @@ description: "Output templates and formatting guidelines for architecture artefa
 7. **Review before publish** — No formal artefact is distributed before peer review; HLDs and cost estimates additionally require security review and budget approval respectively before they are considered approved
 8. **Audience-appropriate** — Match the level of technical detail to the audience; executive summaries are written for non-technical stakeholders, technical sections for engineers; do not embed PHI/PII in architecture documents
 
+## Local File Storage
+
+When creating files locally as part of demand reviews, architecture queries, or any formal output exercise, use the following base directory on the EMIS Group OneDrive:
+
+**Base path**: `C:\Users\Mark.Dowbiggin\OneDrive - EMIS Group\Infrastructure_Solutions Architecture`
+
+All output folders must be created under this base path using the structure below:
+
+| Output Type | Subfolder | Example Path |
+|-------------|-----------|-------------|
+| Demand Reviews | `Demand_Reviews\<YYYY-MM>_<DemandName>\` | `...\Demand_Reviews\2026-06_CohesityPOC\` |
+| High-Level Designs | `HLD\<YYYY-MM>_<ProjectName>\` | `...\HLD\2026-06_PatientPortalAWS\` |
+| Low-Level Designs | `LLD\<YYYY-MM>_<ProjectName>\` | `...\LLD\2026-06_PatientPortalAWS\` |
+| Architecture Decision Records | `ADR\<YYYY-MM>_<Topic>\` | `...\ADR\2026-06_BackupPlatformSelection\` |
+| Architecture Assessments | `Architecture_Assessments\<YYYY-MM>_<DemandName>\` | `...\Architecture_Assessments\2026-06_CohesityPOC\` |
+| Cost Estimates / BoM | `Cost_Estimates\<YYYY-MM>_<ProjectName>\` | `...\Cost_Estimates\2026-06_PatientPortalAWS\` |
+| Runbooks | `Runbooks\<ServiceName>\` | `...\Runbooks\EKS_PatientPortal\` |
+| Post-Incident Reviews | `PIR\<YYYY-MM-DD>_<IncidentRef>\` | `...\PIR\2026-06-19_INC001234\` |
+| Requirements Specifications | `Requirements\<YYYY-MM>_<ProjectName>\` | `...\Requirements\2026-06_CohesityPOC\` |
+
+> **Important**: Do not create output folders under any UHG or Optum OneDrive path. The EMIS Group OneDrive (`OneDrive - EMIS Group`) is the sole authoritative local storage location. Files saved locally are working copies only — the authoritative version must be published to SharePoint, Confluence, or ADO as appropriate.
+
 ## Procedure
 
 ### For Any Formal Output
@@ -75,9 +97,10 @@ description: "Output templates and formatting guidelines for architecture artefa
    - **Version control**: Include version number, date, author, and change history
    - **Review**: All formal documents require peer review before distribution
 5. Include diagrams using approved tools (Mermaid for inline, draw.io for detailed)
-6. Store the output in the appropriate location (SharePoint, Confluence, ADO)
-7. For HLDs and Cost Estimates exceeding governance thresholds, route for budget holder and/or ARB approval before marking as Approved
-8. For any document covering PHI/PII systems, ensure the Compliance Mapping section is complete and security review is confirmed
+6. Save local working copies to `C:\Users\Mark.Dowbiggin\OneDrive - EMIS Group\Infrastructure_Solutions Architecture\` using the subfolder structure defined in **Local File Storage** above
+7. Store the authoritative published version in the appropriate location (SharePoint, Confluence, ADO)
+8. For HLDs and Cost Estimates exceeding governance thresholds, route for budget holder and/or ARB approval before marking as Approved
+9. For any document covering PHI/PII systems, ensure the Compliance Mapping section is complete and security review is confirmed
 
 ## Document Classification
 
