@@ -4,7 +4,7 @@
 
 Standard EMIS/Optum software and licence cost reference for use in Bills of Material (BoM), TCO analyses, and commercial bids. All pricing is **OpEx | Licence** (annual recurring cost) unless noted.
 
-> **Pricing Date**: June 2025
+> **Pricing Date**: June 2026
 > **Currency**: GBP
 > **Important**: VMware pricing marked as POA must be confirmed via Softcat quote. Obtain current quotes for all POA items before including in a commercial proposal or BoM. New UHG-discounted pricing lines supersede Softcat-SCE pricing where both are listed — confirm with Commercial/Procurement which line applies to each engagement.
 
@@ -39,10 +39,10 @@ Standard EMIS/Optum software and licence cost reference for use in Bills of Mate
 
 | Licence | Supplier | Annual Cost (£) | Notes |
 |---------|----------|----------------|-------|
-| SQL Server Standard — 2-core (×2 minimum) | Softcat - SCE | £1,025.00 | Minimum purchase: 4 cores (2× two-core packs) |
-| SQL Server Standard — 2-core (×2 min) — **New UHG Pricing** | UHG % discount | £445.29 | Preferred pricing; confirm applicability with Commercial |
-| SQL Server Enterprise — 2-core (×2 minimum) | Softcat - SCE | £2,936.04 | Minimum purchase: 4 cores (2× two-core packs) |
-| SQL Server Enterprise — 2-core (×2 min) — **New UHG Pricing** | UHG % discount | £1,707.60 | Preferred pricing; confirm applicability with Commercial |
+| SQL Server Standard — 2-core (×2 min) — **TPG/EMIS Pricing** | SCE | £1,025.00 | Minimum purchase: 4 cores (2× two-core packs) |
+| SQL Server Standard — 2-core (×2 min) — **UHG Pricing** | UHG % discount | £445.29 | Preferred pricing; confirm applicability with Commercial |
+| SQL Server Enterprise — 2-core (×2 min) — **TPG/EMIS Pricing** | SCE | £2,936.04 | Minimum purchase: 4 cores (2× two-core packs) |
+| SQL Server Enterprise — 2-core (×2 min) — **UHG Pricing** | UHG % discount | £1,707.60 | Preferred pricing; confirm applicability with Commercial |
 | SQL Server External Connector (per host) | Softcat - SCE | £1,871.94 | Covers unlimited external users accessing SQL from a single server |
 
 > **Licensing note**: Core-based licensing is required for server/cloud workloads. External Connector is an alternative to CALs for solutions accessed by a large or unknown number of external users (e.g., patient-facing applications).
@@ -138,7 +138,7 @@ Standard EMIS/Optum software and licence cost reference for use in Bills of Mate
 |----------|---------|-------------|
 | Windows Server STD | 16-core | £470.00 |
 | Windows Server DC | 16-core | £1,668.96 |
-| SQL Server STD | 4-core min (UHG pricing) | £445.29 |
+| SQL Server STD | 4-core min (TPG/EMIS: £1,025.00 / UHG: £445.29) | See notes |
 | SQL Server ENT | 4-core min (UHG pricing) | £1,707.60 |
 | RHEL | Per server | £270.00 |
 | VMware VCF | Per physical core / vSAN host | £893.04 |
